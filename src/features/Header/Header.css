@@ -1,12 +1,32 @@
 .header {
-  width: 100vw;
-  background-color: var(--background-color);
+  
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--gap);
+  height: var(--height);
+  align-items: center;
+  background-color: var(--base-color);
+  justify-content: space-between;
+ 
+}
+.logo {
+  width: var(--height);
+  min-height: 50px;
+  height: 100%;
+  margin-left: 15px;
+
 }
 
-.header .welcome-message {
+/* .header .welcome-message {
   text-align: left;
   margin-left: 15px;
   line-height: 45px;
-}
+} */
 
-/* .header */
+@media (min-width: 1024px) {
+  .hidden-drawer {
+    display: none;
+    /* Hide Drawer on larger screens */
+  }
+}

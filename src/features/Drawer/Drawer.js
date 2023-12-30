@@ -5,7 +5,7 @@ import { closeDrawer, openDrawer } from './drawerSlice';
 import MenuIcon from '../../elements/MenuIcon.js';
 import './Drawer.css';
 
-function Drawer({ links }) {
+function Drawer({ links, height }) {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.drawer.isOpen);
   const overlayRef = useRef(null);
@@ -33,12 +33,13 @@ function Drawer({ links }) {
 
   return (
     <>
-      <div className="icon-container" onClick={toggleDrawer}>
+      <div
+        className="icon-container"
+        style={height}
+        onClick={toggleDrawer}
+      >
         <MenuIcon />
       </div>
-      {/* <button onClick={toggleDrawer}>
-        {isOpen ? "Close Drawer" : "Open Drawer"}
-      </button> */}
 
       {isOpen && (
         <div

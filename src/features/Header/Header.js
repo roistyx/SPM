@@ -1,35 +1,36 @@
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { Between } from '../../layouts/Line.js';
-import Menu from '../../components/Menu.js';
-import Search from '../Search/Search.js';
-import TickerDisplay from '../../components/TickerDisplay.js';
 import Drawer from '../Drawer/Drawer';
-
 import './Header.css';
 
-export default function Header({ backgroundColor, height, gap }) {
-  const { stockData } = useSelector((state) => state.search);
-
+export default function Header({ baseColor, height, gap }) {
   const menuItems = [
     { name: 'Home', link: '/' },
-    { name: 'News', link: '/news' },
-    { name: 'Search', link: '/search' },
-    { name: 'Financials', link: '/financials' },
-    { name: 'Chat', link: '/chat' },
+    { name: 'About Us', link: '/about-us' },
+    { name: 'Services', link: '/services' },
+    { name: "FAQ's", link: '/faqs' },
+    { name: 'Contact Us', link: '/contact-us' },
+    { name: 'Instagram-icon', link: '/instagram' },
+    { name: 'phone-icon-(647) 883-6567', link: '/:text=Client' },
+    { name: 'Facebook-icon', link: '/facebook' },
   ];
+  const style = {
+    ...(baseColor ? { '--base-color': baseColor } : {}),
+    ...(height ? { '--height': height } : {}),
+    ...(gap ? { '--gap': gap } : {}),
+  };
 
   return (
-    <Between gap="0" backgroundColor={backgroundColor}>
-      {stockData.symbol ? (
-        <TickerDisplay style={{ backgroundColor, height }} />
-      ) : (
-        <Search
-          backgroundColor={backgroundColor}
-          height={height}
-          gap={gap}
-        />
-      )}
-      {stockData.symbol ? <Drawer links={menuItems} /> : null}
-    </Between>
+    <div className="header" style={style}>
+      <img
+        src="http://localhost:3200/SilverPalmsMedical.png"
+        alt="logo"
+        className="logo"
+      />
+
+      <div className="hidden-drawer">
+        <Drawer links={menuItems} position={height} />
+      </div>
+    </div>
   );
 }

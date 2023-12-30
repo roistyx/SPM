@@ -1,14 +1,15 @@
 .App {
   margin: 0;
   box-sizing: border-box;
-  width: 100vw;
-  min-width: 375px;
 }
 
 
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
 
-
-
+h3
 
 .App-header {
   min-height: 100vh;
@@ -19,7 +20,9 @@
   font-size: calc(10px + 2vmin);
 }
 
-
+.App-link {
+  color: rgb(112, 76, 182);
+}
 
 @keyframes App-logo-float {
   0% {

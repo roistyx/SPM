@@ -5,7 +5,7 @@
   padding: var(--gap);
   height: var(--height);
   align-items: center;
-  background-color: var(--background-color);
+  background-color: var(--backgroundColor);
 }
 
 .Line.flex-end {

@@ -16,110 +16,110 @@ import InsertText from './components/InsertText/InsertText';
 const phrases = [
   ['investor', 1],
   ['Wall Street', 2],
-  ['Long-term', 3],
+  ['Long-term', 3]
 ];
 
 const companies = [
   {
     symbol: 'PFE',
     companyName: 'Pfizer Inc',
-    count: 12,
+    count: 12
   },
   {
     symbol: 'CTSO',
     companyName: 'Cytosorbents Corp',
-    count: 3,
+    count: 3
   },
   {
     symbol: 'HUBB',
     companyName: 'Hubbell Inc',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'WMT',
     companyName: 'Walmart Inc',
-    count: 4,
+    count: 4
   },
   {
     symbol: 'GOOG',
     companyName: 'Alphabet Inc',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'MASI',
     companyName: 'Masimo Corp',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'ALL',
     companyName: 'Allstate Corp',
-    count: 2,
+    count: 2
   },
   {
     symbol: 'ABT',
     companyName: 'Abbott Laboratories',
-    count: 3,
+    count: 3
   },
   {
     symbol: 'INTC',
     companyName: 'Intel Corp',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'HP',
     companyName: 'Helmerich & Payne, Inc',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'TRUP',
     companyName: 'Trupanion, Inc',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'ALLY',
     companyName: 'Ally Financial Inc',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'AGL',
     companyName: 'agilon health, inc',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'BP',
     companyName: 'BP p.l.c',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'MASI',
     companyName: 'Masimo Corporation',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'TEAM',
     companyName: 'Atlassian Corporation Class A Common Stock',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'PLUG',
     companyName: 'Plug Power Inc',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'TTD',
     companyName: 'The Trade Desk, Inc',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'O',
     companyName: 'Realty Income Corporation',
-    count: 1,
+    count: 1
   },
   {
     symbol: 'TSLA',
     companyName: 'Tesla, Inc. Common Stock',
-    count: 1,
-  },
+    count: 1
+  }
 ];
 
 const article = `MOST PEOPLE would like to find an easy way to get rich, just as they might want a quick way to get thin, or play a musical instrument. But it is a mistake for novice investors to assume that they can find instant success in achieving high returns when professionals, armed with extensive research and sophisticated technology, struggle to do so. Of course, just as people might get lucky at roulette, they might pick a wonder stock, but the odds are against them. Long-term prosperity can best be achieved by investors who save as much as they can afford in a low-cost fashion and in an asset class that reflects the long-term growth of the economy and the corporate sector. Even then, investors can be unlucky if they start saving in the wrong era (1920s America or 1980s Japan) or if governments seize their assets. These five books provide useful lessons on what approaches to take and, just as importantly, what steps to avoid.
@@ -139,20 +139,15 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Header baseColor="#77A2A8" height="100px" gap="0" />
+      <Header backgroundColor="#1976d2" height="50px" gap="6px" />
 
       <BrowserRouter>
         <Routes>
           <Route
             path="/text"
-            element={
-              <InsertText article={article} phrases={phrases} />
-            }
+            element={<InsertText article={article} phrases={phrases} />}
           />
-          <Route
-            path="/"
-            element={<CompanyGrid companies={companies} />}
-          />
+          <Route path="/" element={<CompanyGrid companies={companies} />} />
           <Route path="/search" element={<SearchDatesRange />} />
           <Route path="/news" element={<News />} />
           <Route path="/financials" element={<StockFinancials />} />
