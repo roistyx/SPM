@@ -137,9 +137,28 @@ function App() {
       dispatch(setStockData(stockData));
     }
   }, []);
+
   return (
     <div className="App">
       <Header baseColor="#77A2A8" height="100px" gap="0" />
+      <div
+        className="color-box"
+        style={{ backgroundColor: 'var(--color-light)' }}
+      >
+        Base Color
+      </div>
+      <div
+        className="color-box"
+        style={{ backgroundColor: 'var(--color-accent)' }}
+      >
+        Dark Color
+      </div>
+      <div
+        className="color-box"
+        style={{ backgroundColor: 'var(--light-color)' }}
+      >
+        Light Color
+      </div>
 
       <BrowserRouter>
         <Routes>
