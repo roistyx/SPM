@@ -20,7 +20,11 @@ const colorNames = {
   accent: chroma(colorScale[0]).set('hsl.h', '+180').hex(),
   text: colorScale[3],
   textSecondary: chroma(colorScale[3]).brighten(2).hex(),
-  link: chroma(colorScale[3]).set('hsl.h', '240').hex(),
+  link: chroma(colorScale[3])
+    .set('hsl.h', 200) // Shift hue towards blue (240 is around the blue hue in HSL)
+    .saturate(1) // Increase saturation if needed, adjust the value as per your requirement
+    .brighten(1) // Brighten if needed, adjust the value to get the desired lightness
+    .hex(),
   dark: colorScale[4],
   light: colorScale[5],
   unknown: colorScale[6],

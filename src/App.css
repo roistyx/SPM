@@ -5,6 +5,17 @@
   min-width: 375px;
 }
 
+body{
+  color: var(--color-text)
+}
+
+a {
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  color: var(--color-link)
+}
+
 
 
 

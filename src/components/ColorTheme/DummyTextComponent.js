@@ -1,16 +1,17 @@
 import React from 'react';
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 
 function DummyTextComponent() {
-  const headline = faker.lorem.sentence();
-  const paragraph = faker.lorem.paragraph();
-  const linkText = faker.lorem.words();
+  const headline = faker.lorem.sentence(2);
+  const paragraph = faker.lorem.paragraph(20);
+  const linkText = faker.lorem.words(2);
 
   return (
     <div>
       <h1>{headline}</h1>
-      <p>{paragraph}</p>
-      <a href="#">{linkText}</a>
+      <p>
+        {paragraph} <a href="#">{linkText}</a>
+      </p>
     </div>
   );
 }
