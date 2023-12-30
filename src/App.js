@@ -12,6 +12,7 @@ import { setStockData } from './features/Search/searchSlice';
 import StockFinancials from './views/StockFinancials';
 import CompanyGrid from './components/CompanyGrid/CompanyGrid';
 import InsertText from './components/InsertText/InsertText';
+import ColorTheme from './components/ColorTheme/ColorTheme.js';
 
 const phrases = [
   ['investor', 1],
@@ -141,24 +142,6 @@ function App() {
   return (
     <div className="App">
       <Header baseColor="#77A2A8" height="100px" gap="0" />
-      <div
-        className="color-box"
-        style={{ backgroundColor: 'var(--color-light)' }}
-      >
-        Base Color
-      </div>
-      <div
-        className="color-box"
-        style={{ backgroundColor: 'var(--color-accent)' }}
-      >
-        Dark Color
-      </div>
-      <div
-        className="color-box"
-        style={{ backgroundColor: 'var(--light-color)' }}
-      >
-        Light Color
-      </div>
 
       <BrowserRouter>
         <Routes>
@@ -172,6 +155,7 @@ function App() {
             path="/"
             element={<CompanyGrid companies={companies} />}
           />
+          <Route path="/colors" element={<ColorTheme />} />
           <Route path="/search" element={<SearchDatesRange />} />
           <Route path="/news" element={<News />} />
           <Route path="/financials" element={<StockFinancials />} />

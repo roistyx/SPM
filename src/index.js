@@ -9,19 +9,24 @@ import chroma from 'chroma-js';
 
 // Generate color scale
 const colorScale = chroma
-  .scale(['#fafa6e', '#77A2A8'])
+  .scale(['#77A2A8', '#112734', '#BC8DA0'])
   .mode('lch')
-  .colors(6);
+  .colors(7);
 
 // Define color names
 const colorNames = {
   primary: colorScale[0],
   secondary: colorScale[1],
-  accent: colorScale[2],
-  highlight: colorScale[3],
+  accent: chroma(colorScale[0]).set('hsl.h', '+180').hex(),
+  text: colorScale[3],
+  textSecondary: chroma(colorScale[3]).brighten(2).hex(),
+  link: chroma(colorScale[3]).set('hsl.h', '240').hex(),
   dark: colorScale[4],
   light: colorScale[5],
+  unknown: colorScale[6],
 };
+
+console.log('colorNames', colorNames);
 
 // Set CSS variables on the document's root element
 const docRoot = document.documentElement;

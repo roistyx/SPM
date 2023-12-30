@@ -1,0 +1,29 @@
+.theme-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    /* Creates a responsive grid layout */
+    gap: 10px;
+    /* Spacing between the boxes */
+    padding: 20px;
+    /* Padding around the grid */
+    max-width: 600px;
+    /* Adjust as needed */
+    margin: 0 auto;
+    /* Center the grid */
+}
+
+.color-box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    /* Text color, change if needed */
+    border-radius: 5px;
+    /* Optional: for rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Optional: for box shadow */
+    font-size: 0.8em;
+    /* Adjust text size as needed */
+}
