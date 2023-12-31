@@ -141,7 +141,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header baseColor="#77A2A8" height="100px" gap="0" />
+      <Header baseColor="#77A2A8" height="60px" gap="10px 0 10px 0" />
 
       <BrowserRouter>
         <Routes>

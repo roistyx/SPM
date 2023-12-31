@@ -1,0 +1,46 @@
+.logo-container {
+    height: 5vm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin-left: 15px;
+}
+.brand-name{
+    background-color: white;
+    display: block;
+    margin-left: 3px;
+    text-align: center;
+    /* width: 125px; */
+    font-family: 'Baskervville', serif;
+    font-size: 1.3rem;
+    color: var(--color-textSecondary);
+    border-radius: 5px;
+    padding: 6px;
+    /* text-shadow: 1px 2px 0px var(--color-textSecondary); */
+}
+
+.logo {
+    
+    height: 3.3rem;
+        /* Adjust as needed */
+    width: auto;
+        /* Maintain aspect ratio */
+    padding: 3px;
+    max-width: 100%;
+   
+        /* Prevent logo from exceeding the header width */
+        /* filter: url(#shadow) */
+    border: 1px solid white;
+    border-radius: 5px;
+    }
+
+.logo path {
+    fill: white;
+}
+/* Example media query for responsiveness */
+@media (max-width: 768px) {
+    .logo {
+        height: 5vh
+    }
+}

@@ -1,28 +1,46 @@
 .header {
-  
-  height: 100px;
   display: flex;
   flex-direction: row;
   padding: var(--gap);
   height: var(--height);
   align-items: center;
-  background-color: var(--base-color);
+  background-color: var(--color-primary);
   justify-content: space-between;
  
 }
+@media (max-width: 768px) {
+  .header {
+    height: 5vh
+    
+  }
+}
+/* .logo-container {
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    outline: 1px solid red;
+    height: 5vh
+} */
 .logo {
-  width: var(--height);
-  min-height: 50px;
-  height: 100%;
-  margin-left: 15px;
+  /* max-height: 10rem; */
+  /* Adjust as needed */
+  /* width: auto; */
+  /* Maintain aspect ratio */
+  /* margin-left: 15px; */
+  /* max-width: 100%; */
+  /* Prevent logo from exceeding the header width */
+}
+/* .logo path {
+  fill: #FF5733;
+} */
 
+@media (max-width: 768px) {
+  /* .logo {
+    height: 7rem
+  } */
 }
 
-/* .header .welcome-message {
-  text-align: left;
-  margin-left: 15px;
-  line-height: 45px;
-} */
+
 
 @media (min-width: 1024px) {
   .hidden-drawer {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Between } from '../../layouts/Line.js';
 import Drawer from '../Drawer/Drawer';
+import LogoComponent from '../../components/LogoComponent/LogoComponent';
 import './Header.css';
 
 export default function Header({ baseColor, height, gap }) {
@@ -22,11 +23,13 @@ export default function Header({ baseColor, height, gap }) {
 
   return (
     <div className="header" style={style}>
-      <img
-        src="http://localhost:3200/SilverPalmsMedical.png"
+      {/* <img
+        src="http://localhost:3200/SilverPalmsMedical.svg"
         alt="logo"
         className="logo"
-      />
+      /> */}
+
+      <LogoComponent />
 
       <div className="hidden-drawer">
         <Drawer links={menuItems} position={height} />

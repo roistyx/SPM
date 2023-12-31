@@ -9,7 +9,7 @@ import chroma from 'chroma-js';
 
 // Generate color scale
 const colorScale = chroma
-  .scale(['#77A2A8', '#112734', '#BC8DA0'])
+  .scale(['#96C7C4', '#112734', '#BC8DA0'])
   .mode('lch')
   .colors(7);
 

@@ -5,8 +5,8 @@ export const Line = ({ children, addClass, baseColor, height, gap }) => {
     <div
       style={{
         ...(baseColor ? { '--base-color': baseColor } : {}),
-        ...(height ? { '--height': height } : {})
-        // ...(gap ? { '--gap': gap } : {})
+        ...(height ? { '--height': height } : {}),
+        ...(gap ? { '--gap': gap } : {})
       }}
       className={`Line ${addClass || ''}`}
     >
