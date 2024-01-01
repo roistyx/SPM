@@ -4,14 +4,12 @@ import './LogoComponent.css'; // Import the CSS file for styling
 
 function LogoComponent() {
   return (
-    <>
-      <div className="logo-container">
-        <LogoSVG className="logo" />
-        <span className="brand-name">
-          Silver Palms <br /> — Medical —
-        </span>
+    <div className="logo-container">
+      <LogoSVG className="logo" />
+      <div className="brand-name">
+        Silver Palms <br /> — Medical —
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,18 +1,19 @@
 import React from 'react';
 import { Between } from '../../layouts/Line.js';
-import Drawer from '../Drawer/Drawer';
+import Drawer from '../../components/Drawer/Drawer.js';
 import LogoComponent from '../../components/LogoComponent/LogoComponent';
+import HorizontalMenu from '../../components/HorizontalMenu/HorizontalMenu.js';
 import './Header.css';
 
 export default function Header({ baseColor, height, gap }) {
   const menuItems = [
-    { name: 'Home', link: '/' },
+    { name: 'Home', link: '/', addClassName: 'home-class' },
     { name: 'About Us', link: '/about-us' },
     { name: 'Services', link: '/services' },
     { name: "FAQ's", link: '/faqs' },
     { name: 'Contact Us', link: '/contact-us' },
     { name: 'Instagram-icon', link: '/instagram' },
-    { name: 'phone-icon-(647) 883-6567', link: '/:text=Client' },
+    { name: '(647) 883-6567', link: '/:text=Client' },
     { name: 'Facebook-icon', link: '/facebook' },
   ];
   const style = {
@@ -23,16 +24,11 @@ export default function Header({ baseColor, height, gap }) {
 
   return (
     <div className="header" style={style}>
-      {/* <img
-        src="http://localhost:3200/SilverPalmsMedical.svg"
-        alt="logo"
-        className="logo"
-      /> */}
-
       <LogoComponent height={height} />
+      <HorizontalMenu menuItems={menuItems} />
 
       <div className="hidden-drawer">
-        <Drawer links={menuItems} marginTop={height + gap} />
+        <Drawer links={menuItems} height={height} gap={gap} />
       </div>
     </div>
   );

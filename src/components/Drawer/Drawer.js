@@ -5,8 +5,15 @@ import { closeDrawer, openDrawer } from './drawerSlice';
 import MenuIcon from '../../elements/MenuIcon.js';
 import './Drawer.css';
 
+function extractInt(cssValue) {
+  const numericValue = parseInt(cssValue, 2);
+
+  return numericValue;
+}
+
 function Drawer({ links, marginTop }) {
-  console.log('marginTop', marginTop);
+  console.log('marginTop: ', extractInt(marginTop));
+
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.drawer.isOpen);
   const overlayRef = useRef(null);

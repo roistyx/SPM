@@ -10,35 +10,11 @@
 }
 @media (max-width: 768px) {
   .header {
-    top: var(--height);
-    
+    height: calc(var(--height) * 0.8)
+    ;
   }
 }
-/* .logo-container {
-    display: flex;
-    align-items: left;
-    justify-content: center;
-    outline: 1px solid red;
-    height: 5vh
-} */
-.logo {
-  /* max-height: 10rem; */
-  /* Adjust as needed */
-  /* width: auto; */
-  /* Maintain aspect ratio */
-  /* margin-left: 15px; */
-  /* max-width: 100%; */
-  /* Prevent logo from exceeding the header width */
-}
-/* .logo path {
-  fill: #FF5733;
-} */
 
-@media (max-width: 768px) {
-  /* .logo {
-    height: 7rem
-  } */
-}
 
 
 
