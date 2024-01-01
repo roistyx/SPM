@@ -141,28 +141,30 @@ function App() {
 
   return (
     <div className="App">
-      <Header baseColor="#77A2A8" height="60px" gap="10px 0 10px 0" />
+      <Header baseColor="#77A2A8" height="60px" gap="10px" />
 
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/text"
-            element={
-              <InsertText article={article} phrases={phrases} />
-            }
-          />
-          <Route
-            path="/"
-            element={<CompanyGrid companies={companies} />}
-          />
-          <Route path="/colors" element={<ColorTheme />} />
-          <Route path="/search" element={<SearchDatesRange />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/financials" element={<StockFinancials />} />
+      <div className="content">
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/text"
+              element={
+                <InsertText article={article} phrases={phrases} />
+              }
+            />
+            <Route
+              path="/"
+              element={<CompanyGrid companies={companies} />}
+            />
+            <Route path="/colors" element={<ColorTheme />} />
+            <Route path="/search" element={<SearchDatesRange />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/financials" element={<StockFinancials />} />
 
-          <Route path="/chat" element={<Chat />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/chat" element={<Chat />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }

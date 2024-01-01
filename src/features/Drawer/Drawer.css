@@ -12,8 +12,11 @@
 
 .drawer-overlay {
   position: absolute;
-  z-index: 1000;
-  top: var(--height);
+  z-index: 1000; 
+  margin-top: calc(var(--height) + var(--gap) * 2);
+  /* margin-top: 20px; */
+  
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;

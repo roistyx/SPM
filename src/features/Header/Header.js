@@ -29,10 +29,10 @@ export default function Header({ baseColor, height, gap }) {
         className="logo"
       /> */}
 
-      <LogoComponent />
+      <LogoComponent height={height} />
 
       <div className="hidden-drawer">
-        <Drawer links={menuItems} position={height} />
+        <Drawer links={menuItems} marginTop={height + gap} />
       </div>
     </div>
   );

@@ -5,7 +5,8 @@ import { closeDrawer, openDrawer } from './drawerSlice';
 import MenuIcon from '../../elements/MenuIcon.js';
 import './Drawer.css';
 
-function Drawer({ links, height }) {
+function Drawer({ links, marginTop }) {
+  console.log('marginTop', marginTop);
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.drawer.isOpen);
   const overlayRef = useRef(null);
@@ -35,7 +36,7 @@ function Drawer({ links, height }) {
     <>
       <div
         className="icon-container"
-        style={height}
+        // style={height}
         onClick={toggleDrawer}
       >
         <MenuIcon />
@@ -48,6 +49,7 @@ function Drawer({ links, height }) {
           className="drawer-overlay"
           onKeyUp={handleEscape}
           onClick={() => dispatch(closeDrawer())}
+          // style={{ marginTop: '80px' }}
         >
           <div
             className="drawer"

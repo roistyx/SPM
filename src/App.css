@@ -4,6 +4,10 @@
   width: 100vw;
   min-width: 375px;
 }
+.content {
+  margin: 0px 50px 0 50px 
+  
+}
 
 body{
   color: var(--color-text)
