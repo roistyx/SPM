@@ -10,11 +10,11 @@ function HorizontalMenu({ menuItems }) {
         {menuItems.map((item, index) => (
           <Center key={index}>
             <MenuItem
-              name={item.name}
-              link={item.link}
+              // name={item.name}
+              // link={item.link}
               addClass={item.addClassName}
             />
-            {/* <a href={item.link}>{item.name}</a> */}
+            <a href={item.link}>{item.name}</a>
           </Center>
         ))}
       </Between>

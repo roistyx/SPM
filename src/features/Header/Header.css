@@ -1,3 +1,5 @@
+
+
 .header {
   display: flex;
   flex-direction: row;
@@ -6,7 +8,20 @@
   align-items: center;
   background-color: var(--color-primary);
   justify-content: space-between;
+  
  
+}
+
+.home-class{
+  color: var(--color-text);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  background-image: url('./images/home.png');
+  background-repeat: no-repeat;
+
 }
 @media (max-width: 768px) {
   .header {
