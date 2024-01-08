@@ -1,15 +1,10 @@
 .theme-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    /* Creates a responsive grid layout */
     gap: 10px;
-    /* Spacing between the boxes */
     padding: 20px;
-    /* Padding around the grid */
     max-width: 600px;
-    /* Adjust as needed */
     margin: 0 auto;
-    /* Center the grid */
 }
 
 .color-box {

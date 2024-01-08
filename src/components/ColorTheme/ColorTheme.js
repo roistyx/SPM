@@ -1,6 +1,7 @@
 import React from 'react';
 import './ColorTheme.css';
 import DummyTextComponent from './DummyTextComponent.js';
+import { Between } from '../../layouts/Line';
 
 function ColorTheme() {
   const colorVariableNames = [
@@ -18,6 +19,7 @@ function ColorTheme() {
   //   console.log('colorVariableNames', chroma('#EF7D8D').name());
 
   return (
+    // <Between>
     <div>
       <div className="theme-container">
         {colorVariableNames.map((name, index) => (
@@ -33,6 +35,7 @@ function ColorTheme() {
       </div>
       <DummyTextComponent />
     </div>
+    // </Between>
   );
 }
 
