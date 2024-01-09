@@ -15,21 +15,24 @@ function App() {
     if (headerRef.current) {
       setContentWidth(`${headerRef.current.offsetWidth}px`);
     }
-  }, []);
+  }, [contentWidth]);
 
   return (
     <div className="App">
-      <div ref={headerRef}>
-        <Header height="60px" gap="10px" />
-      </div>
+      <nav className="nav-container">
+        <div ref={headerRef}>
+          <Header height="60px" gap="10px" />
+        </div>
+      </nav>
 
-      <div className="content" style={{ width: contentWidth }}>
+      <div className="content" style={{ maxWidth: contentWidth }}>
         <BrowserRouter>
           <Routes>
             <Route path="/colors" element={<ColorTheme />} />
           </Routes>
         </BrowserRouter>
       </div>
+      <footer className="footer-container">footer</footer>
     </div>
   );
 }

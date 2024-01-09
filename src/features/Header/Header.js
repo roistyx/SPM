@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Between } from '../../layouts/Line.js';
 import Drawer from '../../components/Drawer/Drawer.js';
 import LogoComponent from '../../components/LogoComponent/LogoComponent';
 import HorizontalMenu from '../../components/HorizontalMenu/HorizontalMenu.js';
 import './Header.css';
 
-export default function Header({ baseColor, height, gap }) {
+export default function Header({ height, gap }) {
+  const headerRef = useRef(null);
   const menuItems = [
     { name: 'Home', link: '/', addClassName: 'home-class' },
     { name: 'About Us', link: '/about-us' },
@@ -15,9 +16,9 @@ export default function Header({ baseColor, height, gap }) {
     { name: 'Instagram-icon', link: '/instagram' },
     { name: '(647) 883-6567', link: '/:text=Client' },
     { name: 'Facebook-icon', link: '/facebook' },
+    { name: 'Twitter-icon', link: '/twitter' },
   ];
   const style = {
-    ...(baseColor ? { '--base-color': baseColor } : {}),
     ...(height ? { '--height': height } : {}),
     ...(gap ? { '--gap': gap } : {}),
   };

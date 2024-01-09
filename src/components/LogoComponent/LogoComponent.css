@@ -43,8 +43,7 @@
     
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
     .logo {
         width: calc(60px * 0.8);
         height: calc(60px * 0.8);

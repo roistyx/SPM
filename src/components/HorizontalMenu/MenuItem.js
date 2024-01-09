@@ -2,7 +2,7 @@ import React from 'react';
 import './MenuItem.css'; // CSS file for styling
 
 function MenuItem({ name, link, addClass }) {
-  console.log('addClass', addClass);
+  // console.log('addClass', addClass);
 
   return (
     <div
