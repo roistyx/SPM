@@ -1,3 +1,8 @@
+:root {
+  --content-width: auto;
+ 
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -17,7 +22,7 @@
   width: 100%;
 
 
-  background-color: var(--color-primary);
+  background-color: #fff;
 }
 .content {
   /* margin: 0px 50px 0 50px  */
@@ -50,13 +55,6 @@ a:hover {
   width: 100%;
   margin-top: 50px;
 }
-
-
-
-
-
-
-
 
 .App-header {
   min-height: 100vh;

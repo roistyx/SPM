@@ -3,6 +3,7 @@
   box-sizing: border-box;
   flex-direction: row;
   padding: var(--gap);
+ 
   height: var(--height);
   align-items: center;
   background-color: var(--backgroundColor);

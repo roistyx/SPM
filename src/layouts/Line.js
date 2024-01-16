@@ -1,12 +1,20 @@
 import './Line.css';
 
-export const Line = ({ children, addClass, baseColor, height, gap }) => {
+export const Line = ({
+  children,
+  addClass,
+  baseColor,
+  height,
+  gap,
+  style,
+}) => {
   return (
     <div
       style={{
         ...(baseColor ? { '--base-color': baseColor } : {}),
         ...(height ? { '--height': height } : {}),
-        ...(gap ? { '--gap': gap } : {})
+        ...(gap ? { '--gap': gap } : {}),
+        ...style,
       }}
       className={`Line ${addClass || ''}`}
     >
@@ -15,27 +23,27 @@ export const Line = ({ children, addClass, baseColor, height, gap }) => {
   );
 };
 
-export const FlexEnd = props => {
+export const FlexEnd = (props) => {
   return <Line {...props} addClass="flex-end" />;
 };
 
-export const FlexStart = props => {
+export const FlexStart = (props) => {
   return <Line {...props} addClass="flex-start" />;
 };
 
-export const Between = props => {
+export const Between = (props) => {
   return <Line {...props} addClass="between" />;
 };
 
-export const Center = props => {
+export const Center = (props) => {
   return <Line {...props} addClass="center" />;
 };
 
-export const SpaceEvenly = props => {
+export const SpaceEvenly = (props) => {
   return <Line {...props} addClass="evenly" />;
 };
 
-export const Rows = props => {
+export const Rows = (props) => {
   return <Line {...props} addClass="rows" />;
 };
 
@@ -44,14 +52,16 @@ export const AlignStart = ({
   addClass,
   backgroundColor,
   height,
-  gap
+  gap,
 }) => {
   return (
     <div
       style={{
-        ...(backgroundColor ? { '--background-color': backgroundColor } : {}),
+        ...(backgroundColor
+          ? { '--background-color': backgroundColor }
+          : {}),
         ...(height ? { '--height': height } : {}),
-        ...(gap ? { '--gap': gap } : {})
+        ...(gap ? { '--gap': gap } : {}),
       }}
       className="AlignStart"
     >

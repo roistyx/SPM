@@ -21,7 +21,7 @@
 }
 
 .logo path {
-    fill: white;
+    fill: var(--color-primary);
 }
 
 .brand-name {

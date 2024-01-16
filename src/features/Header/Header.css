@@ -4,7 +4,7 @@
   padding: var(--gap);
   height: var(--height);
   align-items: center;
-  background-color: var(--color-primary);
+  background-color: #fff;
   justify-content: space-between;
   
 }

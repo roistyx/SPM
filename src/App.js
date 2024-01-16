@@ -3,17 +3,23 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './features/Header/Header';
-import ColorTheme from './components/ColorTheme/ColorTheme.js';
+import HeroSection from './components/HeroSection/HeroSection';
+import ColorTheme from './components/ColorTheme/ColorTheme';
 import './App.css';
 
 function App() {
   const headerRef = useRef(null);
   const [contentWidth, setContentWidth] = useState('auto');
-  console.log('contentWidth', contentWidth);
+  const maxWidth = '1024px';
 
   useEffect(() => {
     if (headerRef.current) {
-      setContentWidth(`${headerRef.current.offsetWidth}px`);
+      const newWidth = `${headerRef.current.offsetWidth}px`;
+      document.documentElement.style.setProperty(
+        '--content-width',
+        newWidth
+      );
+      setContentWidth(newWidth);
     }
   }, [contentWidth]);
 
@@ -25,7 +31,8 @@ function App() {
         </div>
       </nav>
 
-      <div className="content" style={{ maxWidth: contentWidth }}>
+      <div className="content">
+        <HeroSection maxWidth={maxWidth} />
         <BrowserRouter>
           <Routes>
             <Route path="/colors" element={<ColorTheme />} />
