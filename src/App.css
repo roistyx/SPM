@@ -1,6 +1,7 @@
 :root {
   --content-width: auto;
- 
+  --gap: 10px;
+  min-width: 375px;
 }
 
 .App {
@@ -10,27 +11,25 @@
   /* justify-content: center; */
   /* text-align: center; */
   min-height: 100vh;
+
   /* box-sizing: border-box; */
   /* min-width: 375px; */
   margin: auto;
-
 }
 
-.nav-container{
+.nav-container {
   display: flex;
   justify-content: center;
   width: 100%;
-
 
   background-color: #fff;
 }
 .content {
   /* margin: 0px 50px 0 50px  */
-  
 }
 
-body{
-  color: var(--color-text)
+body {
+  color: var(--color-text);
 }
 
 a {
@@ -45,17 +44,6 @@ a:hover {
   text-decoration: underline;
 }
 
-.footer-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-primary);
-  height: 100px;
-  width: 100%;
-  margin-top: 50px;
-}
-
 .App-header {
   min-height: 100vh;
   display: flex;
@@ -64,17 +52,24 @@ a:hover {
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
+h1 {
+  font-size: clamp(1.8rem, 1vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
 
-
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: clamp(1rem, 5vw, 2rem);
   }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
+  p {
+    font-size: clamp(0.5rem, 5vw, 1rem);
   }
 }

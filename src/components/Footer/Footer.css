@@ -1,4 +1,4 @@
-.header {
+.footer-container {
   display: flex;
   box-sizing: border-box;
   flex-direction: row;
@@ -7,10 +7,11 @@
   align-items: center;
   background-color: #fff;
   justify-content: space-between;
+  width: var(--content-width);
 }
 
 @media (max-width: 1300px) {
-  .header {
+  .footer-container {
     height: calc(var(--height) * 0.8);
     min-width: 98vw;
   }

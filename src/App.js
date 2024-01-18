@@ -1,24 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import Header from './features/Header/Header';
-import HeroSection from './components/HeroSection/HeroSection';
-import ColorTheme from './components/ColorTheme/ColorTheme';
-import './App.css';
+import Header from "./features/Header/Header";
+import HeroSection from "./components/HeroSection/HeroSection";
+import ColorTheme from "./components/ColorTheme/ColorTheme";
+import Footer from "./components/Footer/Footer.js";
+import "./App.css";
 
 function App() {
   const headerRef = useRef(null);
-  const [contentWidth, setContentWidth] = useState('auto');
-  const maxWidth = '1024px';
+  const [contentWidth, setContentWidth] = useState("auto");
+  const maxWidth = "1024px";
 
   useEffect(() => {
     if (headerRef.current) {
       const newWidth = `${headerRef.current.offsetWidth}px`;
-      document.documentElement.style.setProperty(
-        '--content-width',
-        newWidth
-      );
+      document.documentElement.style.setProperty("--content-width", newWidth);
       setContentWidth(newWidth);
     }
   }, [contentWidth]);
@@ -27,7 +25,7 @@ function App() {
     <div className="App">
       <nav className="nav-container">
         <div ref={headerRef}>
-          <Header height="60px" gap="10px" />
+          <Header height="60px" />
         </div>
       </nav>
 
@@ -39,7 +37,9 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
-      <footer className="footer-container">footer</footer>
+      <div className="nav-container">
+        <Footer>footer</Footer>
+      </div>
     </div>
   );
 }
