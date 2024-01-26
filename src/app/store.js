@@ -4,6 +4,7 @@ import searchReducer from '../features/Search/searchSlice';
 import newsReducer from '../features/News/newsSlice';
 import drawerReducer from '../components/Drawer/drawerSlice';
 import reportsSlice from '../features/Financials/fiancialReportsSlice';
+import stepperSlice from '../features/Stepper/stepperSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     news: newsReducer,
     drawer: drawerReducer,
     reports: reportsSlice,
+    stepper: stepperSlice,
   },
 });
