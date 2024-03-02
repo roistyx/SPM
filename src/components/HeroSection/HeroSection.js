@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./HeroSection.css";
+import { Appointments } from "../Appointment/ChooseAppointment";
 import { Between } from "../../layouts/Line";
 import getImage from "../../api/getImage";
 import Button from "../../elements/Button";
@@ -15,7 +18,10 @@ function isValidUrl(urlString) {
 
 function HeroSection() {
   const [backgroundImage, setBackgroundImage] = useState(null);
-  console.log(backgroundImage);
+  const [showAppointment, setShowAppointment] = useState(false);
+  // console.log(backgroundImage);
+  let navigate = useNavigate();
+
   useEffect(() => {
     async function fetchAndSetBackgroundImage() {
       try {
@@ -64,7 +70,9 @@ function HeroSection() {
               Have queries regarding your pathology results? Book a personalized
               consultation for a comprehensive second opinion today!
             </p>
-            <Button>Book a Consultation</Button>
+            <Button onClick={() => navigate("/appointments")}>
+              Book a Consultation
+            </Button>
           </div>
         </div>
       </div>

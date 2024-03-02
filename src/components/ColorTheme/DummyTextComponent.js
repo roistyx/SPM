@@ -10,11 +10,11 @@ function DummyTextComponent() {
 
   return (
     <div>
-      <h1>{_.startCase(headline.replace('.', ''))}</h1>
+      <h1>Headline 1</h1>
       <p>
-        {paragraph} <a href="#">{linkText}</a>
+        Paragraph {paragraph} <a href="#">{linkText}</a>
       </p>
-      {slug}
+      {/* {slug} */}
     </div>
   );
 }

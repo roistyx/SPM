@@ -1,5 +1,16 @@
-import React from 'react';
+import React, { useState } from "react";
+import "./ChooseAppointment.css"; // Import the CSS file
+import ReactBigCalendar from "../ReactBigCalendar/ReactBigCalendar";
 
-export default function ChooseAppointment() {
-  return <div>Choose Appointment Content</div>;
-}
+const ChooseAppointment = () => {
+  const style = {
+    padding: "20px",
+  };
+  return (
+    <div style={style}>
+      <ReactBigCalendar />
+    </div>
+  );
+};
+
+export default ChooseAppointment;

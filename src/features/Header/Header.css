@@ -4,9 +4,10 @@
   flex-direction: row;
   padding: var(--gap);
   height: var(--height);
-  align-items: center;
+  /* align-items: center; */
   background-color: #fff;
   justify-content: space-between;
+  /* width: var(--content-width); */
 }
 
 @media (max-width: 1300px) {

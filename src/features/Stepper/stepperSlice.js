@@ -9,6 +9,16 @@ export const stepperSlice = createSlice({
     setCurrentStep: (state, action) => {
       state.currentStep = action.payload;
     },
+    updateFormData: (state, action) => {
+      state.formData = {
+        ...state.formData,
+        ...action.payload,
+      };
+    },
+    setErrorMessage: (state, action) => {
+      const { field, message } = action.payload;
+      state.errors[field] = message;
+    },
   },
 });
 

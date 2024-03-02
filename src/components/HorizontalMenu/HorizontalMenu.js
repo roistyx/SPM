@@ -1,7 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Between, Center } from '../../layouts/Line';
-import MenuItem from './MenuItem';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { Between, Center } from "../../layouts/Line";
+import MenuItem from "./MenuItem";
 
 const HorizontalMenuContainer = styled.div`
   width: 90%;
@@ -25,7 +26,7 @@ function HorizontalMenu({ menuItems }) {
             <MenuItem
               name={item.name}
               link={item.link}
-              addClass={item.addClassName}
+              // addClass={item.addClassName}
             />
           </Center>
         ))}

@@ -18,7 +18,7 @@
   /* width: 78vw; */
   /* width: var(--content-width); */
   margin-left: var(--gap);
-  color: var(--color-text);
+  color: var(--color-text); 
   text-align: left;
 }
 
@@ -30,8 +30,8 @@
   width: 60%;
   min-width: 375px;
   /* width: var(--content-width); */
-  /* margin-left: var(--gap); */
-  padding: 0 calc(var(--gap) * 5);
+  margin-left: 120px;
+  /* padding: 0 calc(var(--gap) * 5); */
   color: var(--color-text);
   text-align: left;
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import './MenuItem.css'; // CSS file for styling
+import React from "react";
+import "./MenuItem.css"; // CSS file for styling
 
 function MenuItem({ name, link, addClass }) {
   // console.log('addClass', addClass);
@@ -8,7 +8,11 @@ function MenuItem({ name, link, addClass }) {
     <div
     //   className="menu-item"
     >
-      <span className={`menu-item ${addClass}`}>{name}</span>
+      {/* <span className={`menu-item`}>{name}</span> */}
+
+      <a className="menu-item" href={link}>
+        {name}
+      </a>
     </div>
   );
 }
