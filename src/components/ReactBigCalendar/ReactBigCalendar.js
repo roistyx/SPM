@@ -14,7 +14,7 @@ function ReactBigCalendar() {
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500 }}
-        selectable={true}
+        
       />
     </div>
   );

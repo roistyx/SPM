@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import "./ChooseAppointment.css"; // Import the CSS file
-import ReactBigCalendar from "../ReactBigCalendar/ReactBigCalendar";
+import React, { useState } from 'react';
+import './ChooseAppointment.css'; // Import the CSS file
+import BasicDatePicker from '../CustomCalendar/CustomCalendar';
 
 const ChooseAppointment = () => {
   const style = {
-    padding: "20px",
+    padding: '20px',
   };
   return (
     <div style={style}>
-      <ReactBigCalendar />
+      <BasicDatePicker />
     </div>
   );
 };
