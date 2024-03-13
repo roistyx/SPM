@@ -3,17 +3,23 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import format from "date-fns/format";
-import dayjs from "dayjs";
+import QueryCalendar from "../../api/QueryCalendar";
 
 export default function BasicDateCalendar() {
   const [dateValue, setDateValue] = useState(new Date());
 
-  const handleDateChange = (newDate) => {
+  const handleDateChange = async (newDate) => {
     setDateValue(newDate);
-    console.log(format(newDate, "PPP")); // Example of logging the date in a readable format
+    try {
+      const formattedDate = format(newDate, "yyyy-MM-dd");
+      const response = await QueryCalendar.getCalendarData(formattedDate);
+      console.log("response from getCalendarData API ", response);
+    } catch (error) {
+      console.log("Error while calling handleDateChange ", error);
+    }
+    return;
   };
 
-  // Set the minimum date to the start of the current month using date-fns
   const minDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 
   return (
