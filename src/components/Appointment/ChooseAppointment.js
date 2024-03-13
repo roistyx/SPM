@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ChooseAppointment.css'; // Import the CSS file
-import BasicDatePicker from '../CustomCalendar/CustomCalendar';
+import BasicDateCalendar from '../CustomCalendar/CustomCalendar';
 
 const ChooseAppointment = () => {
   const style = {
@@ -8,7 +8,7 @@ const ChooseAppointment = () => {
   };
   return (
     <div style={style}>
-      <BasicDatePicker />
+      <BasicDateCalendar />
     </div>
   );
 };
