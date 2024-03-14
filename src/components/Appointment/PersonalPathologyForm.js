@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import {
@@ -11,17 +10,22 @@ import {
   FormControl,
   FormLabel,
   Button,
-  TextareaAutosize,
 } from "@mui/material";
+import {
+  setFormData,
+  setCurrentStep,
+} from "../../features/Stepper/stepperSlice";
+
 import "./PersonalPathologyForm.css";
 
 export default function PersonalPathologyForm() {
   const currentFormData = useSelector((state) => state.stepper.currentFormData);
+  const step = useSelector((state) => state.stepper.currentStep);
   const dispatch = useDispatch();
 
   console.log("currentFormData", currentFormData);
 
-  const [formData, setFormData] = useState({
+  const [formUserData, setFormUserData] = useState({
     firstName: "",
     lastName: "",
     address: "",
@@ -36,14 +40,14 @@ export default function PersonalPathologyForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
+    setFormUserData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
   const handleDateChange = (newValue) => {
-    setFormData((prevState) => ({
+    setFormUserData((prevState) => ({
       ...prevState,
       dob: newValue,
     }));
@@ -51,11 +55,8 @@ export default function PersonalPathologyForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    dispatch({
-      type: "SET_FORM_DATA",
-      payload: { ...formData },
-    });
+    dispatch(setFormData({ ...formUserData }));
+    dispatch(setCurrentStep(step + 1));
   };
 
   return (
@@ -64,7 +65,7 @@ export default function PersonalPathologyForm() {
         <TextField
           label="First Name"
           name="firstName"
-          value={formData.firstName}
+          value={formUserData.firstName}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -72,7 +73,7 @@ export default function PersonalPathologyForm() {
         <TextField
           label="Last Name"
           name="lastName"
-          value={formData.lastName}
+          value={formUserData.lastName}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -80,7 +81,7 @@ export default function PersonalPathologyForm() {
         <TextField
           label="Address"
           name="address"
-          value={formData.address}
+          value={formUserData.address}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -88,7 +89,7 @@ export default function PersonalPathologyForm() {
         <TextField
           label="Phone"
           name="phone"
-          value={formData.phone}
+          value={formUserData.phone}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -97,7 +98,7 @@ export default function PersonalPathologyForm() {
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DatePicker
             label="Date of Birth"
-            value={formData.dob}
+            value={formUserData.dob}
             onChange={handleDateChange}
             renderInput={(params) => (
               <TextField {...params} fullWidth margin="normal" />
@@ -109,7 +110,7 @@ export default function PersonalPathologyForm() {
           label="Email"
           name="email"
           type="email"
-          value={formData.email}
+          value={formUserData.email}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -122,7 +123,7 @@ export default function PersonalPathologyForm() {
           <RadioGroup
             row
             name="consultationMethod"
-            value={formData.consultationMethod}
+            value={formUserData.consultationMethod}
             onChange={handleChange}>
             <FormControlLabel
               value="Phone Call"
@@ -141,7 +142,7 @@ export default function PersonalPathologyForm() {
         <TextField
           label="Diagnosis"
           name="diagnosis"
-          value={formData.diagnosis}
+          value={formUserData.diagnosis}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -153,14 +154,14 @@ export default function PersonalPathologyForm() {
         <textarea
           className="primary-reason-textarea"
           name="primaryReason"
-          value={formData.primaryReason}
+          value={formUserData.primaryReason}
           onChange={handleChange}
         />
 
         <TextField
           label="Referring Physician, if applicable"
           name="referringPhysician"
-          value={formData.referringPhysician}
+          value={formUserData.referringPhysician}
           onChange={handleChange}
           fullWidth
           margin="normal"

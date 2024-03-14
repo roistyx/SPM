@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-
-import Header from "./features/Header/Header";
 import Stepper from "./features/Stepper/Stepper.js";
 import HeroSection from "./components/HeroSection/HeroSection";
 import ColorTheme from "./components/ColorTheme/ColorTheme";
+import Header from "./components/Header/Header.js";
 import Footer from "./components/Footer/Footer.js";
 
 import "./App.css";

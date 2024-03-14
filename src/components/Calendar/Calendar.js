@@ -9,7 +9,7 @@ import "./Calendar.css";
 export default function Calendar() {
   const [datePickerValue, setDatePickerValue] = useState(new Date());
   const [requestedDateResults, setRequestedDateResults] = useState({});
-  console.log("response from getCalendarData API ", requestedDateResults);
+  // console.log("response from getCalendarData API ", requestedDateResults);
 
   const handleDateChange = async (newDate) => {
     setRequestedDateResults({});
