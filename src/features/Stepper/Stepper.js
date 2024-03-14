@@ -1,9 +1,17 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentStep } from "./stepperSlice"; // adjust the import path as necessary
-import { Center } from "../../layouts/Line";
+import Calendar from "../../components/Calendar/Calendar";
+import PersonalPathologyForm from "../../components/Appointment/PersonalPathologyForm";
+import Confirmation from "../../components/Appointment/Confirmation";
 
-const Stepper = ({ steps }) => {
+const steps = [
+  { label: "Choose Appointment", content: <Calendar /> },
+  { label: "Your Info", content: <PersonalPathologyForm /> },
+  { label: "Confirmation", content: <Confirmation /> },
+];
+
+const Stepper = () => {
   const currentStep = useSelector((state) => state.stepper.currentStep);
   const dispatch = useDispatch();
 

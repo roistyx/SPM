@@ -1,0 +1,38 @@
+.calendar-container {
+    display: flex;
+    /* This enables Flexbox for the container */
+    justify-content: space-around;
+    /* This will space out the child elements evenly */
+    align-items: start;
+    /* This aligns items to the start of the container */
+}
+
+.calendar,
+.calendar-results {
+    flex: 1;
+    /* This makes each child take up equal space */
+    padding: 10px;
+    /* Optional: Adds some padding around each child */
+}
+
+.appointments-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Creates two columns */
+    gap: 10px;
+    /* Adds some space between the grid items */
+}
+
+.appointment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Additional styles for responsiveness (optional) */
+@media (max-width: 768px) {
+    .calendar-container {
+        flex-direction: column;
+        /* Stack the children vertically on smaller screens */
+    }
+}

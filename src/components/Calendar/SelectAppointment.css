@@ -1,0 +1,13 @@
+.appointments-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Creates two columns */
+    gap: 10px;
+    /* Adds some space between the grid items */
+}
+
+.appointment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
