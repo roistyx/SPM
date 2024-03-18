@@ -13,6 +13,9 @@ export const stepperSlice = createSlice({
     setFormData: (state, action) => {
       state.currentFormData = action.payload;
     },
+    setAppointmentData: (state, action) => {
+      state.currentAppointmentData = action.payload;
+    },
     setErrorMessage: (state, action) => {
       const { field, message } = action.payload;
       state.errors[field] = message;
@@ -21,7 +24,11 @@ export const stepperSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setCurrentStep, currentFormData, setFormData } =
-  stepperSlice.actions;
+export const {
+  setCurrentStep,
+  currentFormData,
+  setFormData,
+  setAppointmentData,
+} = stepperSlice.actions;
 
 export default stepperSlice.reducer;

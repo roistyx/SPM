@@ -20,10 +20,11 @@ import "./PersonalPathologyForm.css";
 
 export default function PersonalPathologyForm() {
   const currentFormData = useSelector((state) => state.stepper.currentFormData);
+  const currentAppointmentData = useSelector(
+    (state) => state.stepper.currentAppointmentData
+  );
   const step = useSelector((state) => state.stepper.currentStep);
   const dispatch = useDispatch();
-
-  console.log("currentFormData", currentFormData);
 
   const [formUserData, setFormUserData] = useState({
     firstName: "",
