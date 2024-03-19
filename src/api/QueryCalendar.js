@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export default class QueryCalendar {
   static async getCalendarData(date) {
@@ -8,7 +8,22 @@ export default class QueryCalendar {
       );
       return response;
     } catch (error) {
-      console.log("Error while calling getCalendarData API ", error);
+      console.log('Error while calling getCalendarData API ', error);
+    }
+  }
+
+  static async addAppointment(appointmentObject) {
+    try {
+      const response = await axios.post(
+        'http://localhost:3100/calendar/add-appointment',
+        appointmentObject
+      );
+      return response;
+    } catch (error) {
+      console.log(
+        'Error while calling confirmAppointment API ',
+        error
+      );
     }
   }
 }
