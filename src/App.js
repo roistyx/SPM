@@ -6,6 +6,7 @@ import HeroSection from './components/HeroSection/HeroSection';
 import ColorTheme from './components/ColorTheme/ColorTheme';
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
+import Calendar from './components/NewCalendar/NewCalendar';
 
 import './App.css';
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<HeroSection />} />
           <Route path="/colors" element={<ColorTheme />} />
           <Route path="/appointments" element={<Stepper />} />
+          <Route path="/new-calendar" element={<Calendar />} />
         </Routes>
       </BrowserRouter>
 

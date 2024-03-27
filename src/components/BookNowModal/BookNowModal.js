@@ -1,5 +1,6 @@
 import React from 'react';
-import './BookNowModal.css'; // Import the CSS for styling
+import Stepper from '../../features/Stepper/Stepper';
+import './BookNowModal.css';
 
 const BookNowModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -10,9 +11,7 @@ const BookNowModal = ({ isOpen, onClose }) => {
         className="modal-content"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2>Book Now</h2>
-        <p>Fill in your details to book your service.</p>
-        {/* Add form or content here */}
+        <Stepper />
         <button onClick={onClose}>Close</button>
       </div>
     </div>
