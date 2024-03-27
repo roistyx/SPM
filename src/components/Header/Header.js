@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Drawer from '../../components/Drawer/Drawer.js';
 import LogoComponent from '../../components/LogoComponent/LogoComponent';
 import HorizontalMenu from '../../components/HorizontalMenu/HorizontalMenu.js';
-import './Header.css';
 import BookNowModal from '../../components/BookNowModal/BookNowModal.js';
+import Button from '../../elements/Button.js';
+import './Header.css';
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,13 +24,9 @@ export default function Header() {
         <LogoComponent />
         <HorizontalMenu menuItems={menuItems} />
 
-        <div>
-          {/* Button to open the modal */}
-          <button onClick={toggleModal}>Book Now</button>
+        <Button onClick={toggleModal} text="Book Now" />
 
-          {/* Modal component */}
-          <BookNowModal isOpen={isModalOpen} onClose={toggleModal} />
-        </div>
+        <BookNowModal isOpen={isModalOpen} onClose={toggleModal} />
       </header>
     </div>
   );

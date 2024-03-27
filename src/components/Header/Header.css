@@ -1,8 +1,7 @@
 .header-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
   max-width: 1920px;
   /* margin: 0 auto; */
   /* padding: 0 20px; */
@@ -12,11 +11,13 @@
 .header{
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
   width: 100%;
+  
   /* outline: 1px solid red; */
-
 }
+
+
 
 
 @media (max-width: 1024px) {

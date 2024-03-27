@@ -1,8 +1,10 @@
 :root {
   /* --content-width: auto; */
   --text-color: #667B8C;
+  --primary: #96C7C4;
   --text-color-secondary: #112734;
   --secondary: #638E94;
+  --active: #CFCFCF 
 
 }
 
