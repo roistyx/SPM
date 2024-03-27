@@ -5,10 +5,7 @@ import './LogoComponent.css'; // Import the CSS file for styling
 function LogoComponent() {
   return (
     <div className="logo-container">
-      <LogoSVG className="logo" />
-      <div className="brand-name">
-        Silver Palms <br /> — Medical —
-      </div>
+      <img src={'Logo.png'} alt="Logo" />
     </div>
   );
 }

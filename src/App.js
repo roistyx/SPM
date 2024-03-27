@@ -1,44 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
-import Stepper from "./features/Stepper/Stepper.js";
-import HeroSection from "./components/HeroSection/HeroSection";
-import ColorTheme from "./components/ColorTheme/ColorTheme";
-import Header from "./components/Header/Header.js";
-import Footer from "./components/Footer/Footer.js";
+import React, { useEffect, useRef, useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import Stepper from './features/Stepper/Stepper.js';
+import HeroSection from './components/HeroSection/HeroSection';
+import ColorTheme from './components/ColorTheme/ColorTheme';
+import Header from './components/Header/Header.js';
+import Footer from './components/Footer/Footer.js';
 
-import "./App.css";
+import './App.css';
 
 function App() {
-  const headerRef = useRef(null);
-  const [contentWidth, setContentWidth] = useState("auto");
-  const maxWidth = "1024px";
-
-  useEffect(() => {
-    if (headerRef.current) {
-      const newWidth = `${headerRef.current.offsetWidth}px`;
-      document.documentElement.style.setProperty("--content-width", newWidth);
-      setContentWidth(newWidth);
-    }
-  }, [contentWidth]);
-
   return (
     <div className="App">
-      <nav className="nav-container">
-        <div ref={headerRef}>
-          <Header height="60px" />
-        </div>
-      </nav>
+      <Header height="60px" />
 
-      <div className="content">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HeroSection maxWidth={maxWidth} />} />
-            <Route path="/colors" element={<ColorTheme />} />
-            <Route path="/appointments" element={<Stepper />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HeroSection />} />
+          <Route path="/colors" element={<ColorTheme />} />
+          <Route path="/appointments" element={<Stepper />} />
+        </Routes>
+      </BrowserRouter>
+
       <div className="nav-container">
         <Footer>footer</Footer>
       </div>

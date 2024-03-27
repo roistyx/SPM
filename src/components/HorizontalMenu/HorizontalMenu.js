@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Between, Center } from "../../layouts/Line";
-import MenuItem from "./MenuItem";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Between, Center } from '../../layouts/Line';
+import MenuItem from './MenuItem';
 
 const HorizontalMenuContainer = styled.div`
   width: 90%;
@@ -12,9 +12,9 @@ const HorizontalMenuContainer = styled.div`
   align-items: center;
   align-self: center;
 
-  @media (max-width: 1024px) {
-    display: none;
-  }
+  // @media (max-width: 1024px) {
+  //   display: none;
+  // }
 `;
 
 function HorizontalMenu({ menuItems }) {

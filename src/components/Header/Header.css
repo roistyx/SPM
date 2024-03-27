@@ -1,24 +1,28 @@
-.header {
+.header-container {
   display: flex;
-  box-sizing: border-box;
-  flex-direction: row;
-  padding: var(--gap);
-  height: var(--height);
-  /* align-items: center; */
-  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  
+  max-width: 1920px;
+  /* margin: 0 auto; */
+  /* padding: 0 20px; */
+  width: 100%;
+}
+
+.header{
+  display: flex;
   justify-content: space-between;
-  /* width: var(--content-width); */
+  /* align-items: center; */
+  width: 100%;
+  /* outline: 1px solid red; */
+
 }
 
-@media (max-width: 1300px) {
-  .header {
-    height: calc(var(--height) * 0.8);
-    min-width: 98vw;
-  }
-}
 
-@media (min-width: 1024px) {
-  .hidden-drawer {
+@media (max-width: 1024px) {
+
+  .navigation,
+  .make-appointment {
     display: none;
   }
 }

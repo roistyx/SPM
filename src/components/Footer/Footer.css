@@ -1,19 +1,17 @@
 .footer-container {
   display: flex;
   box-sizing: border-box;
-  flex-direction: row;
-  padding: var(--gap);
-  height: var(--height);
   align-items: center;
   background-color: #fff;
   justify-content: space-between;
-  width: var(--content-width);
+  /* width: var(--content-width); */
 }
 
 @media (max-width: 1300px) {
   .footer-container {
-    height: calc(var(--height) * 0.8);
-    min-width: 98vw;
+   
+    /* min-width: 98vw; */
+    
   }
 }
 
