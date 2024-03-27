@@ -7,26 +7,20 @@ function Button({
   children,
   onClick,
   addClass,
-  buttonPadding,
-  buttonContainerMargin,
+  additionalStyles,
 }) {
   const buttonStyle = {
-    ...(buttonContainerMargin
-      ? { '--button-container-margin': buttonContainerMargin }
-      : {}),
-    ...(buttonPadding ? { padding: buttonPadding } : {}),
+    ...additionalStyles,
   };
   const classes = `styled-button ${addClass || ''}`;
   return (
     <button
-      // className={classes}
-      // style={buttonStyle}
-      className="styled-button"
+      className={classes}
+      style={buttonStyle}
       onClick={onClick}
       disabled={isDisabled}
-      data-text={text}
     >
-      {text}
+      {text || children}
     </button>
   );
 }

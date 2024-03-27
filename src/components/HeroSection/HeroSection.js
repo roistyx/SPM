@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import "./HeroSection.css";
-import { Appointments } from "../Appointment/ChooseAppointment";
-import { Between } from "../../layouts/Line";
-import getImage from "../../api/getImage";
-import Button from "../../elements/Button";
+import './HeroSection.css';
+import { Appointments } from '../Appointment/ChooseAppointment';
+import { Between } from '../../layouts/Line';
+import getImage from '../../api/getImage';
+import Button from '../../elements/Button';
 
 function isValidUrl(urlString) {
   try {
@@ -26,8 +26,8 @@ function HeroSection() {
     async function fetchAndSetBackgroundImage() {
       try {
         const response = await getImage.getHeroSectionBackgroundImage(
-          "hero-section-background.png",
-          "0.3"
+          'hero-section-background.png',
+          '0.3'
         );
 
         // Check if response and response.data.url are defined
@@ -40,11 +40,11 @@ function HeroSection() {
           setBackgroundImage(imageUrl);
         } else {
           // Handle the case where the URL is not available
-          console.error("URL not found in the response");
+          console.error('URL not found in the response');
         }
       } catch (error) {
         // Handle any errors that occur during the fetch operation
-        console.error("Error fetching the background image:", error);
+        console.error('Error fetching the background image:', error);
       }
     }
 
@@ -52,27 +52,30 @@ function HeroSection() {
   }, []);
 
   return (
-    <Between style={{ margin: "10px 0 0 0" }}>
+    <Between style={{ margin: '10px 0 0 0' }}>
       <div
         className="hero-section"
         style={{
           backgroundImage: `url(${backgroundImage})`, // Set the background image
-          backgroundSize: "cover", // Cover the entire div
-          backgroundPosition: "center", // Center the background image
+          backgroundSize: 'cover', // Cover the entire div
+          backgroundPosition: 'center', // Center the background image
           backgroundColor: `var(--color-primary)`, // Your existing background color
-        }}>
+        }}
+      >
         <div className="hero-section__container">
           <div className="hero-section__content">
             <h1 className="hero-section__text__title">
               Pathology Focused on Patient Care
             </h1>
             <p className="hero-section__text__description">
-              Have queries regarding your pathology results? Book a personalized
-              consultation for a comprehensive second opinion today!
+              Have queries regarding your pathology results? Book a
+              personalized consultation for a comprehensive second
+              opinion today!
             </p>
-            <Button onClick={() => navigate("/appointments")}>
-              Book a Consultation
-            </Button>
+            <Button
+              onClick={() => navigate('/appointments')}
+              text="Book a Consultation"
+            />
           </div>
         </div>
       </div>

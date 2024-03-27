@@ -24,7 +24,13 @@ export default function Header() {
         <LogoComponent />
         <HorizontalMenu menuItems={menuItems} />
 
-        <Button onClick={toggleModal} text="Book Now" />
+        <Button
+          onClick={toggleModal}
+          text="Book Consultation"
+          additionalStyles={{
+            padding: '12px 20px',
+          }}
+        />
 
         <BookNowModal isOpen={isModalOpen} onClose={toggleModal} />
       </header>

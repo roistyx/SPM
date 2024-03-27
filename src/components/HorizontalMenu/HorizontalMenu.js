@@ -5,7 +5,6 @@ import { Between, Center } from '../../layouts/Line';
 import MenuItem from './MenuItem';
 
 const HorizontalMenuContainer = styled.div`
-  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: center;

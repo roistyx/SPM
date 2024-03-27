@@ -1,11 +1,10 @@
 :root {
   /* --content-width: auto; */
-  --text-color: #667B8C;
-  --primary: #96C7C4;
+  --text-color: #667b8c;
+  --primary: #96c7c4;
   --text-color-secondary: #112734;
-  --secondary: #638E94;
-  --active: #CFCFCF 
-
+  --secondary: #638e94;
+  --active: #cfcfcf;
 }
 
 .App {
@@ -15,16 +14,10 @@
   /* justify-content: center; */
   /* text-align: center; */
   min-height: 100vh;
-width: 80%;
-  
+  width: 80%;
 
   margin: auto;
 }
-
-
-
-
-
 
 a {
   text-decoration: none;
@@ -37,7 +30,6 @@ a:hover {
   color: var(--color-dark);
   text-decoration: underline;
 }
-
 
 h1 {
   font-size: clamp(1.8rem, 1vw, 3rem);

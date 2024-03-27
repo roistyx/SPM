@@ -1,17 +1,15 @@
 .styled-button {
-  
   background-color: var(--primary);
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease;
-  width: 120px
+  /* padding: 12px 20px; */
+  display: inline-block;
 }
-
-
 
 .styled-button:hover {
   background-color: #187cb8;
