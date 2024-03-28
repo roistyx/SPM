@@ -1,37 +1,91 @@
-import React, { useState } from 'react';
-import './Calendar.css';
+import React, { useState, useEffect } from 'react';
+import QueryCalendar from '../../api/QueryCalendar';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  setAppointmentData,
+  setCurrentStep,
+} from '../../features/Stepper/stepperSlice';
+import format from 'date-fns/format';
+
 import upArrow from './images/up_arrow.png';
 import downArrow from './images/down_arrow.png';
 import disabledUpArrow from './images/disabled_up_arrow.png';
-import { set } from 'lodash';
+import './Calendar.css';
+
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
 const NewCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  // const [disabled, setDisabled] = useState(false);
+  const [datePickerValue, setDatePickerValue] = useState(new Date());
+  const [requestedDateResults, setRequestedDateResults] = useState(
+    {}
+  );
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState('');
+  const currentAppointmentData = useSelector(
+    (state) => state.stepper.currentAppointmentData
+  );
 
-  const daysOfWeek = [
-    'Sun',
-    'Mon',
-    'Tue',
-    'Wed',
-    'Thu',
-    'Fri',
-    'Sat',
-  ];
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  const fetchMonthData = async () => {
+    console.log('currentDayAnMonth', currentDate);
+    const formattedDate = format(currentDate, 'yyyy-MM-dd');
+    console.log('formattedDate', formattedDate);
+    const response =
+      await QueryCalendar.getCalendarDataByMonthAndYear(
+        formattedDate
+      );
+
+    console.log('response', response);
+  };
+
+  useEffect(() => {
+    fetchMonthData();
+  }, [currentDate]); // Add currentDate to the dependency array
+
+  useEffect(() => {
+    console.log('Hello from useEffect');
+
+    fetchMonthData();
+  }, []);
+
+  const handleDateChange = async (date) => {
+    const newDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      date
+    );
+
+    setRequestedDateResults({});
+    setDatePickerValue(newDate);
+    try {
+      const formattedDate = format(newDate, 'yyyy-MM-dd');
+      setDate(formattedDate);
+      const response = await QueryCalendar.getCalendarData(
+        formattedDate,
+        time
+      );
+      setRequestedDateResults(response);
+
+      console.log('requestedDateResults', response);
+    } catch (error) {
+      console.log('Error while calling handleDateChange ', error);
+    }
+    return;
+  };
 
   const today = new Date();
 
@@ -44,7 +98,6 @@ const NewCalendar = () => {
     );
   };
 
-  // Handlers for previous and next month navigation
   const prevMonth = () => {
     setCurrentDate(
       new Date(
@@ -64,9 +117,9 @@ const NewCalendar = () => {
     );
   };
 
-  // Generate calendar dates
   const generateCalendarDates = () => {
     const dates = [];
+
     const firstDayOfMonth = new Date(
       currentDate.getFullYear(),
       currentDate.getMonth(),
@@ -107,9 +160,6 @@ const NewCalendar = () => {
 
   const dates = generateCalendarDates();
 
-  // Assuming currentDate and today are defined somewhere in your component
-
-  // Determine if the button should be disabled
   const isDisabled =
     currentDate.getFullYear() <= today.getFullYear() &&
     currentDate.getMonth() <= today.getMonth();
@@ -172,6 +222,7 @@ const NewCalendar = () => {
         ))}
         {dates.map((date, index) => (
           <div
+            onClick={() => handleDateChange(date.day)}
             key={index}
             className={`date ${
               isToday(date.day, date.isCurrentMonth) ? 'today' : ''
