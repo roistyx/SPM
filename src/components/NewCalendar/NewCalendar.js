@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import './Calendar.css';
+import upArrow from './images/up_arrow.png';
+import downArrow from './images/down_arrow.png';
+import disabledUpArrow from './images/disabled_up_arrow.png';
+import { set } from 'lodash';
 
 const NewCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  // const [disabled, setDisabled] = useState(false);
 
   const daysOfWeek = [
     'Sun',
@@ -102,27 +107,60 @@ const NewCalendar = () => {
 
   const dates = generateCalendarDates();
 
+  // Assuming currentDate and today are defined somewhere in your component
+
+  // Determine if the button should be disabled
+  const isDisabled =
+    currentDate.getFullYear() <= today.getFullYear() &&
+    currentDate.getMonth() <= today.getMonth();
+
+  // Choose the background image based on the disabled state
+  const buttonStyle = {
+    backgroundImage: `url(${isDisabled ? disabledUpArrow : upArrow})`,
+    marginRight: '4px',
+    // Add any other styles here
+  };
+
   return (
     <div className="calendar-container">
       <div className="calendar-header">
-        <span>
-          {months[currentDate.getMonth()]} {currentDate.getFullYear()}
+        <span
+          style={{
+            fontWeight: 600,
+            color: '#171725',
+            fontSize: '18px',
+          }}
+        >
+          {months[currentDate.getMonth()]}{' '}
+          <span
+            style={{
+              fontWeight: 14,
+              color: '#171725',
+              fontSize: '18px',
+            }}
+          >
+            {currentDate.getFullYear()}
+          </span>
         </span>
         <span className="horizontal-line"> </span>
         <span>
           <button
+            style={buttonStyle}
             onClick={prevMonth}
-            disabled={
-              currentDate.getFullYear() <= today.getFullYear() &&
-              currentDate.getMonth() <= today.getMonth()
-            }
+            disabled={isDisabled}
           >
-            {/* Unicode for up arrow */}
-            &#8743;
-          </button>{' '}
-          <button onClick={nextMonth}>
+            {/* Button content */}
+          </button>
+
+          <button
+            style={{
+              backgroundImage: `url(${downArrow})`,
+              marginLeft: '4px',
+            }}
+            onClick={nextMonth}
+          >
             {/* Unicode for down arrow */}
-            &#8744;
+            {/* &#8744; */}
           </button>
         </span>
       </div>

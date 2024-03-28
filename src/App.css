@@ -5,6 +5,7 @@
   --text-color-secondary: #112734;
   --secondary: #638e94;
   --active: #cfcfcf;
+  --disabled: #e2e2ea;
 }
 
 .App {
