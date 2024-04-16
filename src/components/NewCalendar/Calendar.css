@@ -60,7 +60,7 @@
   font-size: 14px;
   margin-bottom: 10px;
   text-transform: uppercase;
-  color: #92929d;
+  color: #9d9492;
 }
 
 .date {
@@ -85,5 +85,6 @@
 }
 
 .not-current-month {
-  color: #cccccc; /* Gray out the color */
+  color: #cccccc;
+  /* Gray out the color */
 }
