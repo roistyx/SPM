@@ -1,0 +1,13 @@
+.stepper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  /* max-width: 100%; */
+  min-width: 600px;
+
+  background-color: brown;
+
+  /* box-sizing: border-box;  */
+}
