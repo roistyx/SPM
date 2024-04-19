@@ -9,9 +9,7 @@ import format from "date-fns/format";
 import upArrow from "./images/up_arrow.png";
 import downArrow from "./images/down_arrow.png";
 import disabledUpArrow from "./images/disabled_up_arrow.png";
-import CalendarHeader from "./CalendarHeader.js";
 
-import CalendarBody from "./CalendarBody.js";
 import "./Calendar.css";
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
