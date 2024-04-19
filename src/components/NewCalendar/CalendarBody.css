@@ -1,0 +1,52 @@
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1.25vw 1.75vw;
+    /* Uses viewport width units */
+}
+
+
+.day-of-week {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.date {
+    font-size: 20px;
+    color: var(--text);
+    text-align: center;
+    font-weight: 400;
+    padding: 1rem;
+    border-radius: 10px;
+    /* transition: background-color 0.5s ease, color 0.3s ease; */
+    opacity: 0.7;
+    background-color: #e9eff0;
+}
+
+.date:hover {
+    background-color: var(--secondary);
+    color: white;
+    cursor: pointer;
+}
+
+.today {
+
+    background-color: var(--primary);
+    color: white;
+    opacity: 1
+}
+
+.not-current-month {
+    color: var(--text-secondary);
+    background-color: white
+}
+
+.passed-date {
+    pointer-events: none;
+    background-color: white;
+    opacity: 0.1;
+}

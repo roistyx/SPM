@@ -1,0 +1,38 @@
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.horizontal-line {
+    width: 63%;
+    height: 1px;
+    background-color: #e2e2ea;
+    margin: 0 5px;
+}
+
+.calendar-header button {
+    display: inline-block;
+    background-size: 12px 7px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.calendar-header button:disabled {
+    background-color: var(--disabled);
+    border: none;
+    cursor: not-allowed;
+}
