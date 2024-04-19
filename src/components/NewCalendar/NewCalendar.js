@@ -1,47 +1,50 @@
-import React, { useState, useEffect } from "react";
-import QueryCalendar from "../../api/QueryCalendar";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import QueryCalendar from '../../api/QueryCalendar';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   setAppointmentData,
   setCurrentStep,
-} from "../../features/Stepper/stepperSlice";
-import format from "date-fns/format";
-import upArrow from "./images/up_arrow.png";
-import downArrow from "./images/down_arrow.png";
-import disabledUpArrow from "./images/disabled_up_arrow.png";
+} from '../../features/Stepper/stepperSlice';
+import format from 'date-fns/format';
+import upArrow from './images/up_arrow.png';
+import downArrow from './images/down_arrow.png';
+import disabledUpArrow from './images/disabled_up_arrow.png';
 
-import "./Calendar.css";
+import './Calendar.css';
 
-const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 const NewCalendar = () => {
   const [navigationDate, setNavigationDate] = useState(new Date());
   const [datePickerValue, setDatePickerValue] = useState(new Date());
-  const [requestedDateResults, setRequestedDateResults] = useState({});
-  const [date, setDate] = useState("");
+  const [requestedDateResults, setRequestedDateResults] = useState(
+    {}
+  );
+  const [date, setDate] = useState('');
   const currentAppointmentData = useSelector(
     (state) => state.stepper.currentAppointmentData
   );
 
   const fetchMonthData = async () => {
-    const formattedDate = format(navigationDate, "yyyy-MM-dd");
-    const response = await QueryCalendar.getCalendarDataByMonthAndYear(
-      formattedDate
-    );
+    const formattedDate = format(navigationDate, 'yyyy-MM-dd');
+    const response =
+      await QueryCalendar.getCalendarDataByMonthAndYear(
+        formattedDate
+      );
   };
 
   useEffect(() => {
@@ -49,15 +52,15 @@ const NewCalendar = () => {
   }, [navigationDate]); // Add currentDate to the dependency array
 
   const handleDateChange = async (date) => {
-    console.log("date", date);
+    console.log('date', date);
 
     try {
       const response = await QueryCalendar.getCalendarData(date);
       // setRequestedDateResults(response);
 
-      console.log("requestedDateResults", response);
+      console.log('requestedDateResults', response);
     } catch (error) {
-      console.log("Error while calling handleDateChange ", error);
+      console.log('Error while calling handleDateChange ', error);
     }
     return;
   };
@@ -85,12 +88,20 @@ const NewCalendar = () => {
 
   const prevMonth = () => {
     setNavigationDate(
-      new Date(navigationDate.getFullYear(), navigationDate.getMonth() - 1, 1)
+      new Date(
+        navigationDate.getFullYear(),
+        navigationDate.getMonth() - 1,
+        1
+      )
     );
   };
   const nextMonth = () => {
     setNavigationDate(
-      new Date(navigationDate.getFullYear(), navigationDate.getMonth() + 1, 1)
+      new Date(
+        navigationDate.getFullYear(),
+        navigationDate.getMonth() + 1,
+        1
+      )
     );
   };
 
@@ -130,7 +141,7 @@ const NewCalendar = () => {
             navigationDate.getMonth() - 1,
             prevMonthDay
           ),
-          "MM-dd-yyyy"
+          'MM-dd-yyyy'
         ),
         day: prevMonthDay,
         isCurrentMonth: false,
@@ -142,8 +153,12 @@ const NewCalendar = () => {
     for (let d = 1; d <= lastDayOfMonth.getDate(); d++) {
       dates.push({
         fullDate: format(
-          new Date(navigationDate.getFullYear(), navigationDate.getMonth(), d),
-          "MM-dd-yyyy"
+          new Date(
+            navigationDate.getFullYear(),
+            navigationDate.getMonth(),
+            d
+          ),
+          'MM-dd-yyyy'
         ),
         day: d,
         isCurrentMonth: true,
@@ -160,7 +175,7 @@ const NewCalendar = () => {
             navigationDate.getMonth() + 1,
             d
           ),
-          "MM-dd-yyyy"
+          'MM-dd-yyyy'
         ),
         day: d,
         isNextMonth: true,
@@ -179,8 +194,10 @@ const NewCalendar = () => {
 
   // Choose the background image based on the disabled state
   const buttonStyle = {
-    backgroundImage: `url(${isMonthDisabled ? disabledUpArrow : upArrow})`,
-    marginRight: "4px",
+    backgroundImage: `url(${
+      isMonthDisabled ? disabledUpArrow : upArrow
+    })`,
+    marginRight: '4px',
     // Add any other styles here
   };
 
@@ -203,16 +220,18 @@ const NewCalendar = () => {
         <span
           style={{
             fontWeight: 600,
-            color: "#171725",
-            fontSize: "18px",
-          }}>
-          {months[navigationDate.getMonth()]}{" "}
+            color: '#171725',
+            fontSize: '18px',
+          }}
+        >
+          {months[navigationDate.getMonth()]}{' '}
           <span
             style={{
               fontWeight: 14,
-              color: "#171725",
-              fontSize: "18px",
-            }}>
+              color: '#171725',
+              fontSize: '18px',
+            }}
+          >
             {navigationDate.getFullYear()}
           </span>
         </span>
@@ -221,16 +240,18 @@ const NewCalendar = () => {
           <button
             style={buttonStyle}
             onClick={prevMonth}
-            disabled={isMonthDisabled}>
+            disabled={isMonthDisabled}
+          >
             {/* Button content */}
           </button>
 
           <button
             style={{
               backgroundImage: `url(${downArrow})`,
-              marginLeft: "4px",
+              marginLeft: '4px',
             }}
-            onClick={nextMonth}></button>
+            onClick={nextMonth}
+          ></button>
         </span>
       </div>
       <div className="calendar-body">
@@ -244,16 +265,17 @@ const NewCalendar = () => {
             onClick={() => handleDateChange(date.fullDate)}
             key={index}
             className={`date ${
-              isToday(date.day, date.isCurrentMonth)
-                ? "today"
-                : "not-current-month"
-            }
+              isToday(date.day, date.isCurrentMonth) ? 'today' : ''
+            } ${!date.isCurrentMonth ? 'not-current-month' : ''}
                
                 ${
                   isPast(date.day, date.isCurrentMonth)
-                    ? "not-current-month"
-                    : ""
-                } ${isPassedDate(date.fullDate) ? "passed-date" : ""}`}>
+                    ? 'not-current-month'
+                    : ''
+                } ${
+              isPassedDate(date.fullDate) ? 'passed-date' : ''
+            }`}
+          >
             {date.day}
           </div>
         ))}

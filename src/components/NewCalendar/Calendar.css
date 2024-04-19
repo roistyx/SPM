@@ -62,22 +62,17 @@
   font-size: 1rem;
   margin-bottom: 10px;
   text-transform: uppercase;
-  color: #9d9492;
+  color: var(--text-secondary);
 }
 
 .date {
   font-size: 20px;
-  color: var(--text-color-secondary);
+  color: var(--text);
   text-align: center;
   font-weight: 400;
   padding: 1rem;
   border-radius: 10px;
   transition: background-color 0.5s ease, color 0.3s ease;
-}
-
-.disabled-date {
-  color: #cccccc;
-  cursor: not-allowed;
 }
 
 .date:hover {
@@ -90,8 +85,14 @@
   background-color: var(--primary);
   color: white;
 }
+.not-current-month {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
 
 .passed-date {
   cursor: not-allowed;
-  color: #94d612;
+  pointer-events: none;
+  /* text-decoration: line-through; */
+  opacity: 0.2;
 }

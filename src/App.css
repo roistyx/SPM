@@ -1,7 +1,8 @@
 :root {
-  --text-color: #667b8c;
+  /* --text-color: #667b8c; */
+  --text: #112734;
+  --text-secondary: #667b8c;
   --primary: #96c7c4;
-  --text-color-secondary: #112734;
   --secondary: #638e94;
   --active: #cfcfcf;
   --disabled: #e2e2ea;
