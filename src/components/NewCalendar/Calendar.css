@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: 20px;
   width: 95%;
-  min-width: 500px;
+  /* min-width: 500px; */
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -13,7 +13,8 @@
 .calendar-body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 1.25vw 3vw; /* Uses viewport width units */
+  gap: 1.25vw 3vw;
+  /* Uses viewport width units */
 }
 
 .calendar-header {
@@ -74,6 +75,11 @@
   transition: background-color 0.5s ease, color 0.3s ease;
 }
 
+.disabled-date {
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
 .date:hover {
   background-color: var(--secondary);
   color: white;
@@ -85,6 +91,7 @@
   color: white;
 }
 
-.not-current-month {
-  color: #cccccc;
+.passed-date {
+  cursor: not-allowed;
+  color: #94d612;
 }
