@@ -3,11 +3,12 @@ import QueryCalendar from "../../api/QueryCalendar";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setAppointmentData,
-  setCurrentStep,
+  setMonthAvailAppointments,
 } from "../../features/Stepper/stepperSlice";
 import format from "date-fns/format";
-
 import CalendarBody from "./CalendarBody";
+import ListAppointments from "../Appointment/ListAppointments";
+import ChooseAppointment from "../Appointment/ChooseAppointment";
 
 import "./Calendar.css";
 
@@ -32,8 +33,15 @@ const NewCalendar = () => {
   const [datePickerValue, setDatePickerValue] = useState(new Date());
   const [requestedDateResults, setRequestedDateResults] = useState({});
   const [date, setDate] = useState("");
+
+  const dispatch = useDispatch();
+
   const currentAppointmentData = useSelector(
     (state) => state.stepper.currentAppointmentData
+  );
+
+  const monthAvailAppointments = useSelector(
+    (state) => state.stepper.monthAvailAppointments
   );
 
   const fetchMonthData = async () => {
@@ -41,7 +49,7 @@ const NewCalendar = () => {
     const response = await QueryCalendar.getCalendarDataByMonthAndYear(
       formattedDate
     );
-    console.log("response", response);
+    dispatch(setMonthAvailAppointments(response));
   };
 
   useEffect(() => {
@@ -65,14 +73,20 @@ const NewCalendar = () => {
   const today = new Date();
 
   return (
-    <div className="calendar-container">
-      <CalendarBody
-        setNavigationDate={setNavigationDate}
-        navigationDate={navigationDate}
-        daysOfWeek={daysOfWeek}
-        handleDateChange={handleDateChange}
-      />
-    </div>
+    <>
+      <div className="calendar-container">
+        <CalendarBody
+          setNavigationDate={setNavigationDate}
+          navigationDate={navigationDate}
+          daysOfWeek={daysOfWeek}
+          handleDateChange={handleDateChange}
+        />
+        <ChooseAppointment />
+      </div>
+      <div>
+        <ListAppointments />
+      </div>
+    </>
   );
 };
 
