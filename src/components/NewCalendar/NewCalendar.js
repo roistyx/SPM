@@ -29,9 +29,10 @@ const months = [
 
 const NewCalendar = () => {
   const [navigationDate, setNavigationDate] = useState(new Date());
-  const [datePickerValue, setDatePickerValue] = useState(new Date());
-  const [requestedDateResults, setRequestedDateResults] = useState({});
-  const [date, setDate] = useState("");
+  const [datePickerValue, setDatePickerValue] = useState({
+    date: new Date(),
+    slots: [],
+  });
 
   const convertDateFromApiToFrontEndHelper = (date) => {
     const parts = date.split("-");
@@ -39,7 +40,6 @@ const NewCalendar = () => {
   };
 
   const dispatch = useDispatch();
-  console.log("datePickerValue", datePickerValue);
 
   const currentAppointmentData = useSelector(
     (state) => state.stepper.currentAppointmentData
