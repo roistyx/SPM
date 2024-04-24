@@ -1,4 +1,7 @@
-/* AppointmentPicker.css */
+.container {
+    display: inline-block;
+}
+
 .appointment-picker {
     max-width: 600px;
     margin: 0 auto;

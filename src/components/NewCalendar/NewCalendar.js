@@ -7,7 +7,6 @@ import {
 } from "../../features/Stepper/stepperSlice";
 import format from "date-fns/format";
 import CalendarBody from "./CalendarBody";
-import ListAppointments from "../Appointment/ListAppointments";
 import ChooseAppointment from "../Appointment/ChooseAppointment";
 
 import "./Calendar.css";
@@ -34,7 +33,13 @@ const NewCalendar = () => {
   const [requestedDateResults, setRequestedDateResults] = useState({});
   const [date, setDate] = useState("");
 
+  const convertDateFromApiToFrontEndHelper = (date) => {
+    const parts = date.split("-");
+    return `${parts[2]}-${parts[0]}-${parts[1]}`;
+  };
+
   const dispatch = useDispatch();
+  console.log("datePickerValue", datePickerValue);
 
   const currentAppointmentData = useSelector(
     (state) => state.stepper.currentAppointmentData
@@ -57,36 +62,26 @@ const NewCalendar = () => {
   }, [navigationDate]); // Add currentDate to the dependency array
 
   const handleDateChange = async (date) => {
-    console.log("date", date);
-
-    try {
-      const response = await QueryCalendar.getCalendarData(date);
-      // setRequestedDateResults(response);
-
-      console.log("requestedDateResults", response);
-    } catch (error) {
-      console.log("Error while calling handleDateChange ", error);
-    }
-    return;
+    const formattedDate = convertDateFromApiToFrontEndHelper(date);
+    setDatePickerValue({
+      slots: monthAvailAppointments.filteredSlots[formattedDate],
+      date: formattedDate,
+    });
   };
 
   const today = new Date();
 
   return (
-    <>
-      <div className="calendar-container">
-        <CalendarBody
-          setNavigationDate={setNavigationDate}
-          navigationDate={navigationDate}
-          daysOfWeek={daysOfWeek}
-          handleDateChange={handleDateChange}
-        />
-        <ChooseAppointment />
-      </div>
-      <div>
-        <ListAppointments />
-      </div>
-    </>
+    <div className="calendar-container">
+      <CalendarBody
+        setNavigationDate={setNavigationDate}
+        navigationDate={navigationDate}
+        daysOfWeek={daysOfWeek}
+        handleDateChange={handleDateChange}
+      />
+
+      <ChooseAppointment datePickerValue={datePickerValue} />
+    </div>
   );
 };
 

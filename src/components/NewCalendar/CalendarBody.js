@@ -133,7 +133,7 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
   };
 
   return (
-    <>
+    <div className="calendar-body-container">
       <CalendarHeader
         navigationDate={navigationDate}
         setNavigationDate={setNavigationDate}
@@ -163,7 +163,7 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
