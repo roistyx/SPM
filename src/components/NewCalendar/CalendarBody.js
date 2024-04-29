@@ -1,18 +1,23 @@
-import React from "react";
+import React from 'react';
 import {
   setAppointmentData,
   setMonthAvailAppointments,
-} from "../../features/Stepper/stepperSlice";
-import { useSelector, useDispatch } from "react-redux";
+} from '../../features/Stepper/stepperSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
-import "./CalendarBody.css";
-import format from "date-fns/format";
+import './CalendarBody.css';
+import format from 'date-fns/format';
 
-import CalendarHeader from "./CalendarHeader.js";
+import CalendarHeader from './CalendarHeader.js';
 
-const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
+function CalendarBody({
+  handleDateChange,
+  navigationDate,
+  setNavigationDate,
+  fetchMonthData,
+}) {
   const today = new Date();
   const monthAvailAppointments = useSelector(
     (state) => state.stepper.monthAvailAppointments
@@ -54,7 +59,7 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
             navigationDate.getMonth() - 1,
             prevMonthDay
           ),
-          "MM-dd-yyyy"
+          'yyyy-MM-dd'
         ),
         day: prevMonthDay,
         isCurrentMonth: false,
@@ -66,8 +71,12 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
     for (let d = 1; d <= lastDayOfMonth.getDate(); d++) {
       dates.push({
         fullDate: format(
-          new Date(navigationDate.getFullYear(), navigationDate.getMonth(), d),
-          "MM-dd-yyyy"
+          new Date(
+            navigationDate.getFullYear(),
+            navigationDate.getMonth(),
+            d
+          ),
+          'yyyy-MM-dd'
         ),
         day: d,
         isCurrentMonth: true,
@@ -84,7 +93,7 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
             navigationDate.getMonth() + 1,
             d
           ),
-          "MM-dd-yyyy"
+          'yyyy-MM-dd'
         ),
         day: d,
         isNextMonth: true,
@@ -118,16 +127,15 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
     return inputDate < today;
   };
   const ifAppointmentsAvail = (dateStr) => {
-    const [month, day, year] = dateStr.split("-");
-    const formattedDate = `${year}-${month}-${day}`;
-    if (!monthAvailAppointments.filteredSlots) return false; // Prevents filteredSlots from being undefined in loop
-    // Check if there are any available slots on the given date
-    if (formattedDate in monthAvailAppointments.filteredSlots) {
-      // Access the slots for this date
-      const slots = monthAvailAppointments.filteredSlots[formattedDate];
-      // Check if any slot is available (marked as false means available)
-      return slots.some((slot) => Object.values(slot)[0] === false);
-    }
+    // console.log(
+    //   'monthAvailAppointments',
+    //   monthAvailAppointments[dateStr]
+    // );
+    // const [month, day, year] = dateStr.split('-');
+    // const formattedDate = `${year}-${month}-${day}`;
+    // if (monthAvailAppointments[formattedDate]) {
+    //   return true;
+    // }
 
     return;
   };
@@ -149,15 +157,18 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
             onClick={() => handleDateChange(date.fullDate)}
             key={index}
             className={`date ${
-              isToday(date.day, date.isCurrentMonth) ? "today " : ""
+              isToday(date.day, date.isCurrentMonth) ? 'today ' : ''
             }
-            ${!date.isCurrentMonth ? "not-current-month" : ""} ${
-              isPassedDate(date.fullDate) ? "passed-date" : ""
-            }`}>
+            ${!date.isCurrentMonth ? 'not-current-month' : ''} ${
+              isPassedDate(date.fullDate) ? 'passed-date' : ''
+            }`}
+          >
             {date.day}
             <div
               className={`${
-                ifAppointmentsAvail(date.fullDate) ? "date-available" : ""
+                ifAppointmentsAvail(date.fullDate)
+                  ? 'date-available'
+                  : ''
               }`}
             />
           </div>

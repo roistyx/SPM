@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import QueryCalendar from "../../api/QueryCalendar";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import QueryCalendar from '../../api/QueryCalendar';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   setAppointmentData,
   setMonthAvailAppointments,
-} from "../../features/Stepper/stepperSlice";
-import format from "date-fns/format";
-import CalendarBody from "./CalendarBody";
-import ChooseAppointment from "../Appointment/ChooseAppointment";
+} from '../../features/Stepper/stepperSlice';
+import format from 'date-fns/format';
+import CalendarBody from './CalendarBody';
+import ChooseAppointment from '../Appointment/ChooseAppointment';
 
-import "./Calendar.css";
+import './Calendar.css';
 
-const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 const NewCalendar = () => {
@@ -33,11 +33,6 @@ const NewCalendar = () => {
     date: new Date(),
     slots: [],
   });
-
-  const convertDateFromApiToFrontEndHelper = (date) => {
-    const parts = date.split("-");
-    return `${parts[2]}-${parts[0]}-${parts[1]}`;
-  };
 
   const dispatch = useDispatch();
 
@@ -50,23 +45,21 @@ const NewCalendar = () => {
   );
 
   const fetchMonthData = async () => {
-    const formattedDate = format(navigationDate, "yyyy-MM-dd");
-    const response = await QueryCalendar.getCalendarDataByMonthAndYear(
-      formattedDate
-    );
+    // console.log('navigationDate', navigationDate);
+    const response =
+      await QueryCalendar.getCalendarDataByMonthAndYear(
+        navigationDate
+      );
     dispatch(setMonthAvailAppointments(response));
   };
 
   useEffect(() => {
+    dispatch(setMonthAvailAppointments({}));
     fetchMonthData();
   }, [navigationDate]); // Add currentDate to the dependency array
 
   const handleDateChange = async (date) => {
-    const formattedDate = convertDateFromApiToFrontEndHelper(date);
-    setDatePickerValue({
-      slots: monthAvailAppointments.filteredSlots[formattedDate],
-      date: formattedDate,
-    });
+    console.log('date', date);
   };
 
   const today = new Date();
