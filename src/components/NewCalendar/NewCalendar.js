@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import QueryCalendar from '../../api/QueryCalendar';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import QueryCalendar from "../../api/QueryCalendar";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setAppointmentData,
   setMonthAvailAppointments,
-} from '../../features/Stepper/stepperSlice';
-import format from 'date-fns/format';
-import CalendarBody from './CalendarBody';
-import ChooseAppointment from '../Appointment/ChooseAppointment';
+} from "../../features/Stepper/stepperSlice";
+import format from "date-fns/format";
+import CalendarBody from "./CalendarBody";
+import ChooseAppointment from "../Appointment/ChooseAppointment";
 
-import './Calendar.css';
+import "./Calendar.css";
 
-const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 const NewCalendar = () => {
@@ -46,10 +46,9 @@ const NewCalendar = () => {
 
   const fetchMonthData = async () => {
     // console.log('navigationDate', navigationDate);
-    const response =
-      await QueryCalendar.getCalendarDataByMonthAndYear(
-        navigationDate
-      );
+    const response = await QueryCalendar.getCalendarDataByMonthAndYear(
+      navigationDate
+    );
     dispatch(setMonthAvailAppointments(response));
   };
 
@@ -59,10 +58,9 @@ const NewCalendar = () => {
   }, [navigationDate]); // Add currentDate to the dependency array
 
   const handleDateChange = async (date) => {
-    console.log('date', date);
+    const response = await QueryCalendar.getDayAppointments(date);
+    console.log("response", response);
   };
-
-  const today = new Date();
 
   return (
     <div className="calendar-container">

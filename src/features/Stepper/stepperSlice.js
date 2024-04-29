@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const stepperSlice = createSlice({
-  name: 'stepper',
+  name: "stepper",
   initialState: {
     currentStep: 1,
     currentFormData: {},
@@ -21,10 +21,10 @@ export const stepperSlice = createSlice({
     },
     setMonthAvailAppointments: (state, action) => {
       state.monthAvailAppointments = action.payload;
-      console.log(
-        'monthAvailAppointments',
-        state.monthAvailAppointments
-      );
+      // console.log(
+      //   'monthAvailAppointments',
+      //   state.monthAvailAppointments
+      // );
     },
     setErrorMessage: (state, action) => {
       const { field, message } = action.payload;
