@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import QueryCalendar from "../../api/QueryCalendar";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import QueryCalendar from '../../api/QueryCalendar';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   setAppointmentData,
   setMonthAvailAppointments,
-} from "../../features/Stepper/stepperSlice";
-import format from "date-fns/format";
-import CalendarBody from "./CalendarBody";
-import ChooseAppointment from "../Appointment/ChooseAppointment";
+} from '../../features/Stepper/stepperSlice';
+import format from 'date-fns/format';
+import CalendarBody from './CalendarBody';
+import ChooseAppointment from '../Appointment/ChooseAppointment';
 
-import "./Calendar.css";
+import './Calendar.css';
 
-const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 const NewCalendar = () => {
@@ -33,7 +33,7 @@ const NewCalendar = () => {
     date: new Date(),
     slots: [],
   });
-
+  // console.log('datePickerValue', datePickerValue);
   const dispatch = useDispatch();
 
   const currentAppointmentData = useSelector(
@@ -43,12 +43,14 @@ const NewCalendar = () => {
   const monthAvailAppointments = useSelector(
     (state) => state.stepper.monthAvailAppointments
   );
+  // console.log('monthAvailAppointments', monthAvailAppointments);
 
   const fetchMonthData = async () => {
     // console.log('navigationDate', navigationDate);
-    const response = await QueryCalendar.getCalendarDataByMonthAndYear(
-      navigationDate
-    );
+    const response =
+      await QueryCalendar.getCalendarDataByMonthAndYear(
+        navigationDate
+      );
     dispatch(setMonthAvailAppointments(response));
   };
 
@@ -59,7 +61,7 @@ const NewCalendar = () => {
 
   const handleDateChange = async (date) => {
     const response = await QueryCalendar.getDayAppointments(date);
-    console.log("response", response);
+    console.log('response', response);
   };
 
   return (
