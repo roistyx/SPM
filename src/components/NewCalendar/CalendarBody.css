@@ -1,77 +1,73 @@
 .calendar-body-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 20px;
-    /* width: 95%; */
-    min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  /* width: 95%; */
+  min-width: 400px;
 
-    /* max-width: 800px; */
-    /* min-height: 400px; */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+  /* max-width: 800px; */
+  /* min-height: 400px; */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
 .calendar-body {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1.25vw 1.75vw;
-    /* Uses viewport width units */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1.25vw 1.75vw;
+  /* Uses viewport width units */
 }
 
-
 .day-of-week {
-    text-align: center;
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    color: var(--text-secondary);
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .date {
-    text-align: center;
-    font-size: 20px;
-    color: var(--text);
-    font-weight: 400;
-    padding: 1rem;
-    border-radius: 10px;
-    /* transition: background-color 0.5s ease, color 0.3s ease; */
-    opacity: 0.7;
-    background-color: #e9eff0;
+  text-align: center;
+  font-size: 20px;
+  color: var(--text);
+  font-weight: 400;
+  border-radius: 10px;
+  padding: 1rem 1rem 0.7rem 1rem;
+  /* transition: background-color 0.5s ease, color 0.3s ease; */
+  opacity: 0.7;
+  background-color: #e9eff0;
 }
 
 .date-available {
-
-    background-color: var(--secondary);
-    margin-top: 3px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
+  background-color: var(--secondary);
+  margin-top: 2px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
 }
 
 .date:hover {
-    background-color: var(--secondary);
-    color: white;
-    cursor: pointer;
+  background-color: var(--secondary);
+  color: white;
+  cursor: pointer;
 }
 
 .today {
-    background-color: var(--primary);
-    color: white;
-    opacity: 1
+  background-color: var(--primary);
+  color: white;
+  opacity: 1;
 }
 
 .not-current-month {
-    color: var(--text-secondary);
-    background-color: white
+  color: var(--text-secondary);
+  background-color: white;
 }
 
 .passed-date {
-    pointer-events: none;
-    background-color: white;
-    opacity: 0.1;
+  pointer-events: none;
+  background-color: white;
+  opacity: 0.1;
 }

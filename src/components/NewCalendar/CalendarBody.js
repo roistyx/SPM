@@ -147,10 +147,18 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
             }`}>
             {date.day}
             <div
-              className={`${
-                isDateAvailable(date.fullDate) ? "date-available" : ""
-              }`}
-            />
+              style={{
+                height: "4px",
+                width: "4px",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}>
+              <div
+                className={`${
+                  isDateAvailable(date.fullDate) ? "date-available" : ""
+                }`}
+              />
+            </div>
           </div>
         ))}
       </div>
