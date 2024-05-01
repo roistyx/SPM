@@ -128,12 +128,7 @@ function CalendarBody({
     return inputDate < today;
   };
 
-  const isDateAvailable = (date) => {
-    console.log(
-      'Checking availability for:',
-      date,
-      'in monthAvailAppointments'
-    );
+  const isDateAvailable = async (date) => {
     return !!monthAvailAppointments[date];
   };
 
