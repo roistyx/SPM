@@ -6,7 +6,7 @@ export const stepperSlice = createSlice({
     currentStep: 1,
     currentFormData: {},
     currentAppointmentData: {},
-    monthAvailAppointments: {},
+    calendarAvailability: {},
   },
   reducers: {
     setCurrentStep: (state, action) => {
@@ -19,8 +19,8 @@ export const stepperSlice = createSlice({
       state.currentAppointmentData = action.payload;
       // console.log("currentAppointmentData", state.currentAppointmentData);
     },
-    setMonthAvailAppointments: (state, action) => {
-      state.monthAvailAppointments = action.payload;
+    setCalendarAvailability: (state, action) => {
+      state.calendarAvailability = action.payload;
       // console.log(
       //   'monthAvailAppointments',
       //   state.monthAvailAppointments
@@ -39,7 +39,7 @@ export const {
   currentFormData,
   setFormData,
   setAppointmentData,
-  setMonthAvailAppointments,
+  setCalendarAvailability,
   monthAvailAppointments,
 } = stepperSlice.actions;
 

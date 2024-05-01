@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default class QueryCalendar {
-  static async getCalendarDataByMonthAndYear(navigationDate) {
+  static async getCalendarAvailability(navigationDate) {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     try {
       const response = await axios.post(
-        'http://localhost:3100/calendar/get-month-appointments',
+        "http://localhost:3100/calendar/get-calendar-availability",
         {
           navigationDate,
           timeZone,
@@ -13,16 +13,16 @@ export default class QueryCalendar {
       );
       return response.data;
     } catch (error) {
-      console.log('Error while calling getCalendarData API ', error);
+      console.log("Error while calling getCalendarData API ", error);
     }
   }
 
   static async getDayAppointments(navigationDate) {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    console.log('timeZone', timeZone);
+    console.log("timeZone", timeZone);
     try {
       const response = await axios.post(
-        'http://localhost:3100/calendar/get-day-appointments',
+        "http://localhost:3100/calendar/get-day-appointments",
         {
           navigationDate,
           timeZone,
@@ -30,22 +30,19 @@ export default class QueryCalendar {
       );
       return response.data;
     } catch (error) {
-      console.log('Error while calling getCalendarData API ', error);
+      console.log("Error while calling getCalendarData API ", error);
     }
   }
 
   static async addAppointment(appointmentObject) {
     try {
       const response = await axios.post(
-        'http://localhost:3100/calendar/add-appointment',
+        "http://localhost:3100/calendar/add-appointment",
         appointmentObject
       );
       return response;
     } catch (error) {
-      console.log(
-        'Error while calling confirmAppointment API ',
-        error
-      );
+      console.log("Error while calling confirmAppointment API ", error);
     }
   }
 }
