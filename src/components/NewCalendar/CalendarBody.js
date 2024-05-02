@@ -1,19 +1,23 @@
-import React from "react";
+import React from 'react';
 import {
   setAppointmentData,
   setCalendarAvailability,
-} from "../../features/Stepper/stepperSlice";
-import { useSelector, useDispatch } from "react-redux";
+} from '../../features/Stepper/stepperSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
-import "./CalendarBody.css";
-import format from "date-fns/format";
+import './CalendarBody.css';
+import format from 'date-fns/format';
 
-import CalendarHeader from "./CalendarHeader.js";
-import { ne } from "@faker-js/faker";
+import CalendarHeader from './CalendarHeader.js';
+import { ne } from '@faker-js/faker';
 
-const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
+function CalendarBody({
+  handleDateChange,
+  navigationDate,
+  setNavigationDate,
+}) {
   const today = new Date();
   const calendarAvailability = useSelector(
     (state) => state.stepper.calendarAvailability
@@ -55,7 +59,7 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
             navigationDate.getMonth() - 1,
             prevMonthDay
           ),
-          "yyyy-MM-dd"
+          'yyyy-MM-dd'
         ),
         day: prevMonthDay,
         isCurrentMonth: false,
@@ -67,8 +71,12 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
     for (let d = 1; d <= lastDayOfMonth.getDate(); d++) {
       dates.push({
         fullDate: format(
-          new Date(navigationDate.getFullYear(), navigationDate.getMonth(), d),
-          "yyyy-MM-dd"
+          new Date(
+            navigationDate.getFullYear(),
+            navigationDate.getMonth(),
+            d
+          ),
+          'yyyy-MM-dd'
         ),
         day: d,
         isCurrentMonth: true,
@@ -85,7 +93,7 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
             navigationDate.getMonth() + 1,
             d
           ),
-          "yyyy-MM-dd"
+          'yyyy-MM-dd'
         ),
         day: d,
         isNextMonth: true,
@@ -99,13 +107,13 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
   const dates = generateCalendarDates();
 
   const isToday = (todayDate) => {
-    if (format(today, "yyyy-MM-dd") === todayDate) {
+    if (format(today, 'yyyy-MM-dd') === todayDate) {
       return true;
     }
     return;
   };
   const isPassedDate = (dateStr) => {
-    const parts = dateStr.split("-"); // Split the date string into parts
+    const parts = dateStr.split('-'); // Split the date string into parts
     const year = parseInt(parts[0], 10);
     const month = parseInt(parts[1], 10) - 1; // Subtract 1 because months are zero-indexed
     const day = parseInt(parts[2], 10);
@@ -141,21 +149,25 @@ function CalendarBody({ handleDateChange, navigationDate, setNavigationDate }) {
           <div
             onClick={() => handleDateChange(date.fullDate)}
             key={index}
-            className={`date ${isToday(date.fullDate) ? "today " : ""}
-            ${!date.isCurrentMonth ? "not-current-month" : ""} ${
-              isPassedDate(date.fullDate) ? "passed-date" : ""
-            }`}>
+            className={`date ${isToday(date.fullDate) ? 'today ' : ''}
+            ${!date.isCurrentMonth ? 'not-current-month' : ''} ${
+              isPassedDate(date.fullDate) ? 'passed-date' : ''
+            }`}
+          >
             {date.day}
             <div
               style={{
-                height: "4px",
-                width: "4px",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}>
+                height: '4px',
+                width: '4px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}
+            >
               <div
                 className={`${
-                  isDateAvailable(date.fullDate) ? "date-available" : ""
+                  isDateAvailable(date.fullDate)
+                    ? 'date-available'
+                    : ''
                 }`}
               />
             </div>

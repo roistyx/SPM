@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import format from "date-fns/format";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import format from 'date-fns/format';
 
-import "./ChooseAppointment.css"; // Import the CSS file
+import './ChooseAppointment.css'; // Import the CSS file
 
 const ChooseAppointment = ({ datePickerValue }) => {
-  const formattedDate = format(datePickerValue.date, "yyyy-MM-dd");
+  const formattedDate = format(datePickerValue.date, 'yyyy-MM-dd');
   const monthAvailAppointments = useSelector(
     (state) => state.stepper.monthAvailAppointments
   );
-  // console.log("monthAvailAppointments.filteredSlots", monthAvailAppointments);
+  console.log('datePickerValue', datePickerValue);
 
   useEffect(() => {
     // console.log(monthAvailAppointments.filteredSlots[formattedDate]);s
@@ -17,7 +17,7 @@ const ChooseAppointment = ({ datePickerValue }) => {
   });
 
   const style = {
-    padding: "20px",
+    padding: '20px',
   };
 
   return <div></div>;
