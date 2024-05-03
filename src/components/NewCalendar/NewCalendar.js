@@ -56,55 +56,12 @@ const NewCalendar = () => {
   }, [navigationDate]); // Add currentDate to the dependency array
 
   function processSlots(slots) {
-    const groupedByDate = {};
-
-    // Helper function to convert UTC to local time and format it
-    function formatTime(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true,
-      });
-    }
-
-    slots.forEach((slot) => {
-      const startDate = new Date(slot.startTime);
-      const endDate = new Date(slot.endTime);
-      const newYorkTime = slot.NewYorkTime;
-
-      // Format start and end times to local time
-      const startTime = formatTime(slot.startTime);
-      const endTime = formatTime(slot.endTime);
-
-      // Get local date for grouping
-      const date = startDate.toLocaleDateString('en-US');
-
-      // Initialize date key in the grouped object if it does not exist
-      if (!groupedByDate[date]) {
-        groupedByDate[date] = [];
-      }
-
-      // Combine start and end times to create a time range string
-      const timeRange = `${startTime} to ${endTime}`;
-
-      // Add the time range and booking status to the corresponding date
-      groupedByDate[date].push({
-        [timeRange]: slot.isBooked,
-        newYorkTime,
-      });
-    });
-
-    // Convert the groupedByDate object to the desired array format
-    return Object.keys(groupedByDate).map((date) => ({
-      date: date,
-      appointments: groupedByDate[date],
-    }));
+    console.log('slots', slots);
   }
 
   const handleDateChange = async (date) => {
     const response = await QueryCalendar.postDayAppointments(date);
-    console.log('response', processSlots(response));
+    processSlots(response);
   };
 
   return (
