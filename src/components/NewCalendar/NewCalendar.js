@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import QueryCalendar from '../../api/QueryCalendar';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import QueryCalendar from "../../api/QueryCalendar";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setAppointmentData,
   setCalendarAvailability,
-} from '../../features/Stepper/stepperSlice';
-import format from 'date-fns/format';
-import CalendarBody from './CalendarBody';
-import ChooseAppointment from '../Appointment/ChooseAppointment';
+} from "../../features/Stepper/stepperSlice";
+import format from "date-fns/format";
+import CalendarBody from "./CalendarBody";
+import ChooseAppointment from "../Appointment/ChooseAppointment";
 
-import './Calendar.css';
+import "./Calendar.css";
 
-const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 const NewCalendar = () => {
@@ -55,13 +55,9 @@ const NewCalendar = () => {
     checkCalendarAvailability();
   }, [navigationDate]); // Add currentDate to the dependency array
 
-  function processSlots(slots) {
-    console.log('slots', slots);
-  }
-
   const handleDateChange = async (date) => {
     const response = await QueryCalendar.postDayAppointments(date);
-    processSlots(response);
+    console.log("response", response);
   };
 
   return (
