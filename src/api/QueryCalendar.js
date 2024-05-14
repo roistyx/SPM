@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { DateTime } from 'luxon';
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-console.log('timeZone', timeZone);
 function convertToUTCNewYorkTime(dateString) {
   // Create a DateTime in the America/New_York timezone at the start of the given date
   const newYorkTime = DateTime.fromISO(dateString, {

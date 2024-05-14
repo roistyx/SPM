@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setAppointmentData,
@@ -32,10 +32,11 @@ function CalendarHeader({
 }) {
   const userYear = navigationDate.year();
   const userMonth = navigationDate.month();
-  const today = new Date();
+  let today = new Date();
   const isMonthDisabled =
     userYear <= today.getFullYear() && userMonth <= today.getMonth();
 
+  useEffect(() => {}, [isMonthDisabled]);
   // Choose the background image based on the disabled state
   const buttonStyle = {
     backgroundImage: `url(${

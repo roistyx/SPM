@@ -26,22 +26,26 @@ const months = [
   'November',
   'December',
 ];
+const userTime = moment(new Date());
 
 const NewCalendar = () => {
-  const [navigationDate, setNavigationDate] = useState(
-    moment(new Date())
-  );
+  const [navigationDate, setNavigationDate] = useState(userTime);
+
+  const longDateFormat = `${navigationDate.format('MMMM D, YYYY')}`;
+  const yesAppointmentsMessage = `Select an appointment for ${navigationDate.format(
+    'MMMM D, YYYY'
+  )} `;
+  const noAppointmentsMessage = `There are no available appointments for ${navigationDate.format(
+    'MMMM D, YYYY'
+  )} `;
   const [datePickerValue, setDatePickerValue] = useState({
     date: navigationDate,
     slots: [],
+    longDateFormat,
+    yesAppointmentsMessage,
+    noAppointmentsMessage,
   });
   const dispatch = useDispatch();
-
-  const currentAppointmentData = useSelector(
-    (state) => state.stepper.currentAppointmentData
-  );
-
-  // console.log('monthAvailAppointments', monthAvailAppointments);
 
   const checkCalendarAvailability = async () => {
     // console.log('navigationDate', navigationDate);
@@ -52,13 +56,39 @@ const NewCalendar = () => {
   };
 
   useEffect(() => {
+    const formattedNavigationDate = userTime.format('YYYY-MM-DD');
+    if (
+      userTime.month() === navigationDate.month() &&
+      userTime.year() === navigationDate.year()
+    ) {
+      handleDateChange(formattedNavigationDate);
+    }
+    setDatePickerValue({
+      date: {},
+      slots: [],
+      longDateFormat,
+      yesAppointmentsMessage,
+      noAppointmentsMessage,
+    });
+  }, [navigationDate]);
+
+  useEffect(() => {
+    // const formattedNavigationDate =
+    //   navigationDate.format('YYYY-MM-DD');
+
     dispatch(setCalendarAvailability({}));
     checkCalendarAvailability();
   }, [navigationDate]); // Add currentDate to the dependency array
 
   const handleDateChange = async (date) => {
     const response = await QueryCalendar.postDayAppointments(date);
-    setDatePickerValue({ date, slots: response });
+    setDatePickerValue({
+      date,
+      slots: response,
+      longDateFormat,
+      yesAppointmentsMessage,
+      noAppointmentsMessage,
+    });
   };
 
   return (
