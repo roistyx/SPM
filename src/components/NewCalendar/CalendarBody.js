@@ -9,7 +9,6 @@ import './CalendarBody.css';
 import format from 'date-fns/format';
 
 import CalendarHeader from './CalendarHeader.js';
-import { ne } from '@faker-js/faker';
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -18,34 +17,35 @@ function CalendarBody({
   navigationDate,
   setNavigationDate,
 }) {
+  const userYear = navigationDate.year();
+  const userMonth = navigationDate.month();
   const today = new Date();
   const calendarAvailability = useSelector(
     (state) => state.stepper.calendarAvailability
   );
-
   const generateCalendarDates = () => {
     const dates = [];
     // Create a Date object for the first day of the current month.
     // This uses the year and month from navigationDate, and sets the day to 1.
     const firstDayOfMonth = new Date(
-      navigationDate.getFullYear(), // Get the year from navigationDate
-      navigationDate.getMonth(), // Get the month from navigationDate
+      userYear, // Get the year from navigationDate
+      userMonth, // Get the month from navigationDate
       1 // Set the day to 1, which is always the first day of any month
     );
 
     // Create a Date object for the last day of the current month.
     // By setting the day to 0 in the context of the next month, it rolls back to the last day of the current month.
     const lastDayOfMonth = new Date(
-      navigationDate.getFullYear(), // Get the year from navigationDate
-      navigationDate.getMonth() + 1, // Increment the month by 1, moving to the next month
+      userYear, // Get the year from navigationDate
+      userMonth + 1, // Increment the month by 1, moving to the next month
       0 // Set the day to 0, which JavaScript interprets as the last day of the previous month
     );
 
     // Create a Date object for the last day of the previous month.
     // By setting the day to 0 with the current month, it gives the last day of the month before the current one.
     const lastDayOfPreviousMonth = new Date(
-      navigationDate.getFullYear(), // Get the year from navigationDate
-      navigationDate.getMonth(), // Use the current month from navigationDate
+      userYear, // Get the year from navigationDate
+      userMonth, // Use the current month from navigationDate
       0 // Set the day to 0, which rolls back to the last day of the previous month
     ).getDate(); // .getDate() extracts just the day part, giving us the last day as a number
 
@@ -54,11 +54,7 @@ function CalendarBody({
       const prevMonthDay = lastDayOfPreviousMonth - i + 1;
       dates.push({
         fullDate: format(
-          new Date(
-            navigationDate.getFullYear(),
-            navigationDate.getMonth() - 1,
-            prevMonthDay
-          ),
+          new Date(userYear, userMonth - 1, prevMonthDay),
           'yyyy-MM-dd'
         ),
         day: prevMonthDay,
@@ -71,11 +67,7 @@ function CalendarBody({
     for (let d = 1; d <= lastDayOfMonth.getDate(); d++) {
       dates.push({
         fullDate: format(
-          new Date(
-            navigationDate.getFullYear(),
-            navigationDate.getMonth(),
-            d
-          ),
+          new Date(userYear, userMonth, d),
           'yyyy-MM-dd'
         ),
         day: d,
@@ -88,11 +80,7 @@ function CalendarBody({
     for (let d = 1; d <= daysToCompleteRow; d++) {
       dates.push({
         fullDate: format(
-          new Date(
-            navigationDate.getFullYear(),
-            navigationDate.getMonth() + 1,
-            d
-          ),
+          new Date(userYear, userMonth + 1, d),
           'yyyy-MM-dd'
         ),
         day: d,
@@ -100,7 +88,7 @@ function CalendarBody({
         isCurrentMonth: false,
       });
     }
-
+    // console.log('dates', dates);
     return dates;
   };
 

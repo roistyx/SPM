@@ -3,24 +3,49 @@ import { useSelector, useDispatch } from 'react-redux';
 import format from 'date-fns/format';
 
 import './ChooseAppointment.css'; // Import the CSS file
-
 const ChooseAppointment = ({ datePickerValue }) => {
-  const formattedDate = format(datePickerValue.date, 'yyyy-MM-dd');
-  const monthAvailAppointments = useSelector(
-    (state) => state.stepper.monthAvailAppointments
-  );
-  console.log('datePickerValue', datePickerValue);
+  console.log('appointments', datePickerValue.slots);
 
-  useEffect(() => {
-    // console.log(monthAvailAppointments.filteredSlots[formattedDate]);s
-    // Fetch the data for the selected date
-  });
-
-  const style = {
-    padding: '20px',
+  const handleAppointmentClick = (appointment) => {
+    console.log('Appointment selected:', appointment);
+    // Additional functionality can be implemented here
   };
 
-  return <div></div>;
+  return (
+    <div className="appointment-container">
+      {/* {datePickerValue.slots ? (
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '10px',
+            padding: '20px',
+          }}
+        >
+          {datePickerValue.map((appointment) => {
+            // Convert UTC time to local time for display
+            const startTime = new Date(
+              appointment.startTime
+            ).toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            });
+            return (
+              <button
+                key={appointment._id}
+                onClick={() => handleAppointmentClick(appointment)}
+              >
+                {startTime}
+              </button>
+            );
+          })}
+        </div>
+      ) : (
+        <div>No appointments available</div>
+      )} */}
+    </div>
+  );
 };
 
 export default ChooseAppointment;

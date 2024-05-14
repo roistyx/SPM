@@ -1,39 +1,40 @@
-import React, { useState, useEffect } from "react";
-import QueryCalendar from "../../api/QueryCalendar";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import QueryCalendar from '../../api/QueryCalendar';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   setAppointmentData,
   setCalendarAvailability,
-} from "../../features/Stepper/stepperSlice";
-import format from "date-fns/format";
-import CalendarBody from "./CalendarBody";
-import ChooseAppointment from "../Appointment/ChooseAppointment";
+} from '../../features/Stepper/stepperSlice';
+import moment from 'moment-timezone';
 
-import "./Calendar.css";
+import CalendarBody from './CalendarBody';
+import ChooseAppointment from '../Appointment/ChooseAppointment';
+import './Calendar.css';
 
-const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 const NewCalendar = () => {
-  const [navigationDate, setNavigationDate] = useState(new Date());
+  const [navigationDate, setNavigationDate] = useState(
+    moment(new Date())
+  );
   const [datePickerValue, setDatePickerValue] = useState({
-    date: new Date(),
+    date: navigationDate,
     slots: [],
   });
-  // console.log('datePickerValue', datePickerValue);
   const dispatch = useDispatch();
 
   const currentAppointmentData = useSelector(
@@ -57,7 +58,7 @@ const NewCalendar = () => {
 
   const handleDateChange = async (date) => {
     const response = await QueryCalendar.postDayAppointments(date);
-    console.log("response", response);
+    setDatePickerValue({ date, slots: response });
   };
 
   return (
