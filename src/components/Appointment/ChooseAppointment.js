@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import moment from 'moment-timezone';
-
+import { setSetSelectedAppointment } from '../../features/Stepper/stepperSlice';
 import './ChooseAppointment.css'; // Import the CSS file
 const ChooseAppointment = ({ datePickerValue }) => {
   const slots = datePickerValue.slots;
-  console.log(
-    'datePickerValue.noAppointmentsMessage',
-    datePickerValue
+  const dispatch = useDispatch();
+  const selectedAppointment = useSelector(
+    (state) => state.stepper.selectedAppointment
   );
+  console.log('selectedAppointment', selectedAppointment);
 
   const handleAppointmentClick = (appointment) => {
-    console.log(
-      'datePickerValue.noAppointmentsMessage',
-      datePickerValue.noAppointmentsMessage
-    );
+    console.log('appointment', appointment._id);
+    dispatch(setSetSelectedAppointment(appointment));
     // Additional functionality can be implemented here
   };
 
