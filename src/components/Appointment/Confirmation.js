@@ -7,22 +7,21 @@ import AppointmentDateTitle from "./AppointmentDateTitle";
 export default function Confirmation() {
   const [appointmentConfirmed, setAppointmentConfirmed] = useState(false);
   const currentFormData = useSelector((state) => state.stepper.currentFormData);
-  const selectedObj = useSelector((state) => state.stepper.selectedAppointment);
-  console.log("selectedAppointment", selectedObj);
-  const currentAppointmentData = useSelector(
-    (state) => state.stepper.currentAppointmentData
+  const selectedAppointmentObject = useSelector(
+    (state) => state.stepper.selectedAppointment
   );
+  console.log("selectedAppointment", selectedAppointmentObject);
+
   const step = useSelector((state) => state.stepper.currentStep);
   const dispatch = useDispatch();
 
-  let appointmentObject = {
-    dateAndTime: currentAppointmentData,
-    formData: currentFormData,
-  };
-
   const handleSubmitAppointment = async (e) => {
     e.preventDefault();
-    const response = await QueryCalendar.addAppointment(appointmentObject);
+    const response = await QueryCalendar.addAppointment({
+      currentFormData,
+      selectedAppointmentObject,
+    });
+    console.log("response", response);
     setAppointmentConfirmed(true);
   };
 
@@ -34,7 +33,7 @@ export default function Confirmation() {
     <div className="confirmation-container">
       {!appointmentConfirmed ? (
         <>
-          <AppointmentDateTitle selectedObj={selectedObj} />
+          <AppointmentDateTitle selectedObj={selectedAppointmentObject} />
           <div>
             <h1>Confirmation</h1>
             <p>First Name: {currentFormData.firstName}</p>
@@ -47,8 +46,6 @@ export default function Confirmation() {
             <p>Diagnosis: {currentFormData.diagnosis}</p>
             <p>Primary Reason: {currentFormData.primaryReason}</p>
             <p>Referring Physician: {currentFormData.referringPhysician}</p>
-            <p>Date: {currentAppointmentData.date}</p>
-            <p>Time: {currentAppointmentData.time}</p>
           </div>
           <div>
             <button onClick={handleEditAppointment}>Previous</button>

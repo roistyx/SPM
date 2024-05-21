@@ -25,8 +25,15 @@ function AppointmentDateTitle({ selectedObj }) {
   }
 
   const extractedInfo = extractAppointmentInfo(selectedObj);
-  console.log(extractedInfo);
-  return <div>AppointmentDateTitle</div>;
+  // console.log(extractedInfo);
+  return (
+    <div className="appointment-date-title">
+      <h2>{extractedInfo.date}</h2>
+      <h3>
+        {extractedInfo.startTime} - {extractedInfo.duration}
+      </h3>
+    </div>
+  );
 }
 
 export default AppointmentDateTitle;

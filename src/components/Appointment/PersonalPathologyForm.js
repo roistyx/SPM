@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  LocalizationProvider,
-  DatePicker,
-} from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import {
   TextField,
   Radio,
@@ -13,21 +10,20 @@ import {
   FormControl,
   FormLabel,
   Button,
-} from '@mui/material';
+} from "@mui/material";
 import {
   setFormData,
   setCurrentStep,
-} from '../../features/Stepper/stepperSlice';
+} from "../../features/Stepper/stepperSlice";
 
-import './PersonalPathologyForm.css';
+import "./PersonalPathologyForm.css";
 
 export default function PersonalPathologyForm() {
-  const currentFormData = useSelector(
-    (state) => state.stepper.currentFormData
+  const currentFormData = useSelector((state) => state.stepper.currentFormData);
+  const selectedAppointmentObject = useSelector(
+    (state) => state.stepper.selectedAppointment
   );
-  const currentAppointmentData = useSelector(
-    (state) => state.stepper.currentAppointmentData
-  );
+  console.log("selectedAppointmentObject", selectedAppointmentObject);
   const step = useSelector((state) => state.stepper.currentStep);
   const dispatch = useDispatch();
 
@@ -42,6 +38,7 @@ export default function PersonalPathologyForm() {
     diagnosis: currentFormData.diagnosis,
     primaryReason: currentFormData.primaryReason,
     referringPhysician: currentFormData.referringPhysician,
+    appointmentId: selectedAppointmentObject._id,
   });
 
   const handleChange = (e) => {
@@ -134,8 +131,7 @@ export default function PersonalPathologyForm() {
             row
             name="consultationMethod"
             value={formUserData.consultationMethod}
-            onChange={handleChange}
-          >
+            onChange={handleChange}>
             <FormControlLabel
               value="Phone Call"
               control={<Radio />}
@@ -146,11 +142,7 @@ export default function PersonalPathologyForm() {
               control={<Radio />}
               label="Facetime"
             />
-            <FormControlLabel
-              value="Zoom"
-              control={<Radio />}
-              label="Zoom"
-            />
+            <FormControlLabel value="Zoom" control={<Radio />} label="Zoom" />
           </RadioGroup>
         </FormControl>
 
@@ -182,11 +174,7 @@ export default function PersonalPathologyForm() {
           margin="normal"
         />
         <button onClick={handleEditAppointment}>Previous</button>
-        <Button
-          type="submit"
-          variant="contained"
-          style={{ marginTop: 20 }}
-        >
+        <Button type="submit" variant="contained" style={{ marginTop: 20 }}>
           Continue
         </Button>
       </form>
