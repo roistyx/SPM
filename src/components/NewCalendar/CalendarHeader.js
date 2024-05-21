@@ -10,25 +10,11 @@ import downArrow from './images/down_arrow.png';
 import disabledUpArrow from './images/disabled_up_arrow.png';
 import './CalendarHeader.css';
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
 function CalendarHeader({
   navigationDate,
   setNavigationDate,
   userTimeZone,
+  months,
 }) {
   const userYear = navigationDate.year();
   const userMonth = navigationDate.month();

@@ -10,12 +10,14 @@ import format from 'date-fns/format';
 
 import CalendarHeader from './CalendarHeader.js';
 
-const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+// const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function CalendarBody({
   handleDateChange,
   navigationDate,
   setNavigationDate,
+  daysOfWeek,
+  months,
 }) {
   const userYear = navigationDate.year();
   const userMonth = navigationDate.month();
@@ -126,6 +128,7 @@ function CalendarBody({
       <CalendarHeader
         navigationDate={navigationDate}
         setNavigationDate={setNavigationDate}
+        months={months}
       />
       <div className="calendar-body">
         {daysOfWeek.map((day) => (

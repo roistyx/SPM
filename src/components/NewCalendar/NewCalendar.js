@@ -26,24 +26,27 @@ const months = [
   'November',
   'December',
 ];
+
+function formatDateWithIntl(date) {
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  return new Intl.DateTimeFormat('en-GB', options).format(date);
+}
 const userTime = moment(new Date());
 
 const NewCalendar = () => {
   const [navigationDate, setNavigationDate] = useState(userTime);
 
-  const longDateFormat = `${navigationDate.format('MMMM D, YYYY')}`;
-  const yesAppointmentsMessage = `Select an appointment for ${navigationDate.format(
-    'MMMM D, YYYY'
-  )} `;
-  const noAppointmentsMessage = `There are no available appointments for ${navigationDate.format(
-    'MMMM D, YYYY'
-  )} `;
+  const longDateFormat = formatDateWithIntl(navigationDate);
+
   const [datePickerValue, setDatePickerValue] = useState({
     date: navigationDate,
     slots: [],
     longDateFormat,
-    yesAppointmentsMessage,
-    noAppointmentsMessage,
   });
   const dispatch = useDispatch();
 
@@ -67,8 +70,6 @@ const NewCalendar = () => {
       date: {},
       slots: [],
       longDateFormat,
-      yesAppointmentsMessage,
-      noAppointmentsMessage,
     });
   }, [navigationDate]);
 
@@ -86,8 +87,6 @@ const NewCalendar = () => {
       date,
       slots: response,
       longDateFormat,
-      yesAppointmentsMessage,
-      noAppointmentsMessage,
     });
   };
 
@@ -97,6 +96,7 @@ const NewCalendar = () => {
         setNavigationDate={setNavigationDate}
         navigationDate={navigationDate}
         daysOfWeek={daysOfWeek}
+        months={months}
         handleDateChange={handleDateChange}
       />
 

@@ -1,73 +1,21 @@
-.container {
-    display: inline-block;
+.appointment-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  min-width: 470px;
+  /* outline: 1px solid #f30c0c; */
+  /* padding: 1rem; */
 }
-
-.appointment-picker {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+.appointment-header {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2rem;
+  /* margin-bottom: 1rem; */
+  /* padding: 1rem; */
+  letter-spacing: 0.1px;
 }
-
-.appointment-picker h2,
-.appointment-picker p {
-    text-align: center;
-}
-
-.calendar-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.calendar-day-names,
-.calendar-dates,
-.time-slots {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.calendar-day-names span,
-.calendar-dates button,
-.time-slots button {
-    margin: 5px;
-    min-width: 30px;
-    text-align: center;
-}
-
-.calendar-dates button,
-.time-slots button {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    background-color: #f8f8f8;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.calendar-dates button:hover,
-.time-slots button:hover {
-    background-color: #e2e2e2;
-}
-
-.calendar-dates button.selected-date,
-.time-slots button.selected-time {
-    background-color: lightgreen;
-    border-color: green;
-}
-
-@media (max-width: 768px) {
-    .appointment-picker {
-        padding: 10px;
-    }
-
-    .calendar-navigation button,
-    .calendar-day-names span,
-    .calendar-dates button,
-    .time-slots button {
-        min-width: 20px;
-        padding: 5px;
-    }
+.no-appointments-div {
+  text-align: center;
+  color: var(--text-secondary);
 }
