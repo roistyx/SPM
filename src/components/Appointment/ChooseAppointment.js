@@ -27,62 +27,69 @@ const ChooseAppointment = ({ datePickerValue }) => {
   };
 
   return (
-    <div className="appointment-container">
-      <div className="appointment-header">
-        {datePickerValue.longDateFormat}
-      </div>
-      {!slots || slots.length !== 0 ? (
-        <div>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '10px',
-              padding: '20px',
+    <>
+      <div className="vertical-line"></div>
+      <div className="appointment-container">
+        <div className="appointment-header">
+          {datePickerValue.longDateFormat}
+        </div>
+        {!slots || slots.length !== 0 ? (
+          <div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                gap: '10px',
+                padding: '20px',
+              }}
+            >
+              {slots.map((appointment) => {
+                // Convert UTC time to local time for display
+                const startTime = new Date(
+                  appointment.startTime
+                ).toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: true,
+                });
+                return (
+                  <button
+                    key={appointment._id}
+                    onClick={() =>
+                      handleAppointmentClick(appointment)
+                    }
+                  >
+                    {startTime}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="no-appointments-div">
+            <div
+              style={{ marginTop: '1rem', marginBottom: '1.2rem' }}
+            >
+              No appointments for this day
+            </div>
+            <img
+              style={{ padding: '2.82rem' }}
+              src={'No_appointments _for_this_day.png'}
+              alt="No_appointments _for_this_day"
+            />
+          </div>
+        )}
+        {appointmentSelected ? (
+          <button
+            onClick={() => {
+              dispatch(setCurrentStep(2));
             }}
           >
-            {slots.map((appointment) => {
-              // Convert UTC time to local time for display
-              const startTime = new Date(
-                appointment.startTime
-              ).toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true,
-              });
-              return (
-                <button
-                  key={appointment._id}
-                  onClick={() => handleAppointmentClick(appointment)}
-                >
-                  {startTime}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      ) : (
-        <div className="no-appointments-div">
-          <div style={{ marginTop: '1rem', marginBottom: '1.2rem' }}>
-            No appointments for this day
-          </div>
-          <img
-            style={{ padding: '2.82rem' }}
-            src={'No_appointments _for_this_day.png'}
-            alt="No_appointments _for_this_day"
-          />
-        </div>
-      )}
-      {appointmentSelected ? (
-        <button
-          onClick={() => {
-            dispatch(setCurrentStep(2));
-          }}
-        >
-          Appointment Selected{' '}
-        </button>
-      ) : null}
-    </div>
+            Appointment Selected{' '}
+          </button>
+        ) : null}
+      </div>
+    </>
   );
 };
 
