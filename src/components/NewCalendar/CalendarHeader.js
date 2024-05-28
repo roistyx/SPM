@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setAppointmentData,
   setCalendarAvailability,
-} from '../../features/Stepper/stepperSlice';
-import moment from 'moment-timezone';
-import upArrow from './images/up_arrow.png';
-import downArrow from './images/down_arrow.png';
-import disabledUpArrow from './images/disabled_up_arrow.png';
-import './CalendarHeader.css';
+} from "../../features/Stepper/stepperSlice";
+import moment from "moment-timezone";
+import upArrow from "./images/up_arrow.png";
+import downArrow from "./images/down_arrow.png";
+import disabledUpArrow from "./images/disabled_up_arrow.png";
+import "./CalendarHeader.css";
 
 function CalendarHeader({
   navigationDate,
@@ -23,13 +23,9 @@ function CalendarHeader({
     userYear <= today.getFullYear() && userMonth <= today.getMonth();
 
   useEffect(() => {}, [isMonthDisabled]);
-  // Choose the background image based on the disabled state
   const buttonStyle = {
-    backgroundImage: `url(${
-      isMonthDisabled ? disabledUpArrow : upArrow
-    })`,
-    marginRight: '4px',
-    // Add any other styles here
+    backgroundImage: `url(${isMonthDisabled ? disabledUpArrow : upArrow})`,
+    marginRight: "4px",
   };
   const prevMonth = () => {
     setNavigationDate(
@@ -46,18 +42,16 @@ function CalendarHeader({
       <span
         style={{
           fontWeight: 600,
-          color: '#171725',
-          fontSize: '18px',
-        }}
-      >
-        {months[userMonth]}{' '}
+          color: "#171725",
+          fontSize: "18px",
+        }}>
+        {months[userMonth]}{" "}
         <span
           style={{
             fontWeight: 14,
-            color: '#171725',
-            fontSize: '18px',
-          }}
-        >
+            color: "#171725",
+            fontSize: "18px",
+          }}>
           {userYear}
         </span>
       </span>
@@ -66,18 +60,16 @@ function CalendarHeader({
         <button
           style={buttonStyle}
           onClick={prevMonth}
-          disabled={isMonthDisabled}
-        >
+          disabled={isMonthDisabled}>
           {/* Button content */}
         </button>
 
         <button
           style={{
             backgroundImage: `url(${downArrow})`,
-            marginLeft: '4px',
+            marginLeft: "4px",
           }}
-          onClick={nextMonth}
-        ></button>
+          onClick={nextMonth}></button>
       </span>
     </div>
   );

@@ -1,40 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import QueryCalendar from '../../api/QueryCalendar';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import QueryCalendar from "../../api/QueryCalendar";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setAppointmentData,
+  setCurrentDatePickerValue,
   setCalendarAvailability,
-} from '../../features/Stepper/stepperSlice';
-import moment from 'moment-timezone';
+} from "../../features/Stepper/stepperSlice";
+import moment from "moment-timezone";
 
-import CalendarBody from './CalendarBody';
-import ChooseAppointment from '../Appointment/ChooseAppointment';
-import './Calendar.css';
+import CalendarBody from "./CalendarBody";
+import ChooseAppointment from "../Appointment/ChooseAppointment";
+import "./Calendar.css";
 
-const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 function formatDateWithIntl(date) {
   const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   };
-  return new Intl.DateTimeFormat('en-GB', options).format(date);
+  return new Intl.DateTimeFormat("en-GB", options).format(date);
 }
 const userTime = moment(new Date());
 
@@ -59,7 +60,7 @@ const NewCalendar = () => {
   };
 
   useEffect(() => {
-    const formattedNavigationDate = userTime.format('YYYY-MM-DD');
+    const formattedNavigationDate = userTime.format("YYYY-MM-DD");
     if (
       userTime.month() === navigationDate.month() &&
       userTime.year() === navigationDate.year()
@@ -79,8 +80,14 @@ const NewCalendar = () => {
   }, [navigationDate]);
 
   const handleDateChange = async (date) => {
-    console.log('date', date);
+    console.log("date", moment(date).format("dddd, D MMMM YYYY"));
+
     const response = await QueryCalendar.postDayAppointments(date);
+    dispatch(
+      setCurrentDatePickerValue({
+        value: moment(date).format("dddd, D MMMM YYYY"),
+      })
+    );
     setDatePickerValue({
       date,
       slots: response,

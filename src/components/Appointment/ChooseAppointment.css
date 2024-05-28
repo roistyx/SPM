@@ -9,8 +9,10 @@
 .vertical-line {
   content: '';
   /* height: 27.5rem;  */
-  width: 1px; /* Width of the vertical line */
-  background-color: #e2e2ea; /* Color of the vertical line */
+  width: 1px;
+  /* Width of the vertical line */
+  background-color: #e2e2ea;
+  /* Color of the vertical line */
   /* margin-right: 2.813rem; */
   margin-left: 5.625rem;
 }
@@ -23,10 +25,59 @@
   letter-spacing: 0.1px;
   width: 26.25rem;
 }
+
 .no-appointments-div {
   text-align: center;
   color: var(--text-secondary);
   margin-right: 2.563rem;
   font-size: 1.125rem;
   letter-spacing: 0.86px;
+}
+
+.appointment-button {
+  font-size: 20px;
+  width: 202px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-weight: 400;
+  letter-spacing: 0.86px;
+  line-height: 30px;
+}
+
+.appointment-button:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.continue-button-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.appointment-selected-button {
+  width: 100%;
+  font-size: 20px;
+  margin-left: 40px;
+  margin-right: 20px;
+  height: 50px;
+  background-color: var(--primary);
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 0.86px;
+  line-height: 30px;
+}
+
+.appointment-selected-button:hover {
+  background-color: var(--secondary);
+  color: #fff;
+  border: 1px solid var(--primary);
 }
