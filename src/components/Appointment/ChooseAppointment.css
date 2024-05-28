@@ -11,18 +11,22 @@
   /* height: 27.5rem;  */
   width: 1px; /* Width of the vertical line */
   background-color: #e2e2ea; /* Color of the vertical line */
-  margin-right: 2.813rem;
-  margin-left: 2.813rem;
+  /* margin-right: 2.813rem; */
+  margin-left: 5.625rem;
 }
 
 .appointment-header {
-  font-size: 2rem;
+  font-size: 24px;
   font-weight: 600;
   line-height: 2rem;
   text-align: center;
   letter-spacing: 0.1px;
+  width: 26.25rem;
 }
 .no-appointments-div {
   text-align: center;
   color: var(--text-secondary);
+  margin-right: 2.563rem;
+  font-size: 1.125rem;
+  letter-spacing: 0.86px;
 }

@@ -6,24 +6,30 @@ import {
   setCurrentStep,
 } from '../../features/Stepper/stepperSlice';
 import './ChooseAppointment.css'; // Import the CSS file
-const ChooseAppointment = ({ datePickerValue }) => {
+const ChooseAppointment = ({
+  datePickerValue,
+  navigationDate,
+  setNavigationDate,
+}) => {
   const [appointmentSelected, setAppointmentSelected] =
     useState(false);
+
   const slots = datePickerValue.slots;
   const dispatch = useDispatch();
-  const selectedAppointment = useSelector(
-    (state) => state.stepper.selectedAppointment
-  );
-  const currentStep = useSelector(
-    (state) => state.stepper.currentStep
-  );
+  // const selectedAppointment = useSelector(
+  //   (state) => state.stepper.selectedAppointment
+  // );
+  // const currentStep = useSelector(
+  //   (state) => state.stepper.currentStep
+  // );
 
-  // console.log("appointmentSelected", appointmentSelected);
+  console.log('datePickerValue', datePickerValue.longDateFormat);
 
   const handleAppointmentClick = (appointment) => {
     // console.log('appointment', appointment._id);
     dispatch(setSetSelectedAppointment(appointment));
     setAppointmentSelected(true);
+    // setNavigationDate(new Date(datePickerValue.date));
   };
 
   return (

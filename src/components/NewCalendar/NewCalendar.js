@@ -74,14 +74,12 @@ const NewCalendar = () => {
   }, [navigationDate]);
 
   useEffect(() => {
-    // const formattedNavigationDate =
-    //   navigationDate.format('YYYY-MM-DD');
-
     dispatch(setCalendarAvailability({}));
     checkCalendarAvailability();
-  }, [navigationDate]); // Add currentDate to the dependency array
+  }, [navigationDate]);
 
   const handleDateChange = async (date) => {
+    console.log('date', date);
     const response = await QueryCalendar.postDayAppointments(date);
     setDatePickerValue({
       date,
@@ -100,7 +98,11 @@ const NewCalendar = () => {
         handleDateChange={handleDateChange}
       />
 
-      <ChooseAppointment datePickerValue={datePickerValue} />
+      <ChooseAppointment
+        datePickerValue={datePickerValue}
+        navigationDate={navigationDate}
+        setNavigationDate={setNavigationDate}
+      />
     </div>
   );
 };
