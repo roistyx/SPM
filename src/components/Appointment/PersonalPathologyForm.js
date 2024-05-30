@@ -67,116 +67,103 @@ export default function PersonalPathologyForm() {
   };
 
   return (
-    <div className="personal-pathology-form-container">
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="First Name"
-          name="firstName"
-          value={formUserData.firstName}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Last Name"
-          name="lastName"
-          value={formUserData.lastName}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Address"
-          name="address"
-          value={formUserData.address}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Phone"
-          name="phone"
-          value={formUserData.phone}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <DatePicker
-            label="Date of Birth"
-            value={formUserData.dob}
-            onChange={handleDateChange}
-            renderInput={(params) => (
-              <TextField {...params} fullWidth margin="normal" />
-            )}
+    <div className="personal-information-container">
+      <span className="title-personal-information">Personal Information</span>
+      <form className="container0">
+        <div className="container1">
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={formUserData.firstName}
+            onChange={handleChange}
           />
-        </LocalizationProvider>
-
-        <TextField
-          label="Email"
-          name="email"
-          type="email"
-          value={formUserData.email}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-
-        <FormControl component="fieldset" margin="normal">
-          <FormLabel component="legend">
-            Select your preferred method of consultation
-          </FormLabel>
-          <RadioGroup
-            row
-            name="consultationMethod"
-            value={formUserData.consultationMethod}
-            onChange={handleChange}>
-            <FormControlLabel
-              value="Phone Call"
-              control={<Radio />}
-              label="Phone Call"
-            />
-            <FormControlLabel
-              value="Facetime"
-              control={<Radio />}
-              label="Facetime"
-            />
-            <FormControlLabel value="Zoom" control={<Radio />} label="Zoom" />
-          </RadioGroup>
-        </FormControl>
-
-        <TextField
-          label="Diagnosis"
-          name="diagnosis"
-          value={formUserData.diagnosis}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-
-        <FormLabel component="legend" style={{ marginTop: 20 }}>
-          Primary reason for contacting Personal Pathology Consulting
-        </FormLabel>
-        <textarea
-          className="primary-reason-textarea"
-          name="primaryReason"
-          value={formUserData.primaryReason}
-          onChange={handleChange}
-        />
-
-        <TextField
-          label="Referring Physician, if applicable"
-          name="referringPhysician"
-          value={formUserData.referringPhysician}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-        <button onClick={handleEditAppointment}>Previous</button>
-        <Button type="submit" variant="contained" style={{ marginTop: 20 }}>
-          Continue
-        </Button>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formUserData.lastName}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="dateOfBirth"
+            placeholder="Date of Birth"
+            value={formUserData.dob}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            value={formUserData.address}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone"
+            value={formUserData.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="container2">
+          <h3>Consultation Method</h3>
+          <div className="radio-buttons">
+            <label>
+              <input
+                type="radio"
+                name="consultationMethod"
+                value="Phone Call"
+                onChange={handleChange}
+              />{" "}
+              Phone Call
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="consultationMethod"
+                value="Facetime"
+                onChange={handleChange}
+              />{" "}
+              Facetime
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="consultationMethod"
+                value="Zoom"
+                onChange={handleChange}
+              />{" "}
+              Zoom
+            </label>
+          </div>
+          <input
+            type="text"
+            name="diagnosis"
+            placeholder="Diagnosis"
+            value={formUserData.diagnosis}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="primaryReason"
+            placeholder="Primary Reason"
+            value={formUserData.primaryReason}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="referringPhysician"
+            placeholder="Referring Physician"
+            value={formUserData.referringPhysician}
+            onChange={handleChange}
+          />
+          <button type="button" onClick={handleEditAppointment}>
+            Back
+          </button>
+          <button type="submit">Next</button>
+        </div>
       </form>
     </div>
   );
