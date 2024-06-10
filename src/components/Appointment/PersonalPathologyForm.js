@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import {
-  TextField,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
-  FormControl,
-  FormLabel,
-  Button,
-} from "@mui/material";
+
 import {
   setFormData,
   setCurrentStep,
@@ -67,104 +59,108 @@ export default function PersonalPathologyForm() {
   };
 
   return (
-    <div className="personal-information-container">
-      <span className="title-personal-information">Personal Information</span>
-      <form className="container0">
-        <div className="container1">
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formUserData.firstName}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={formUserData.lastName}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="dateOfBirth"
-            placeholder="Date of Birth"
-            value={formUserData.dob}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            value={formUserData.address}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="phone"
-            placeholder="Phone"
-            value={formUserData.phone}
-            onChange={handleChange}
-          />
+    <form className="form-container">
+      <div className="demographics-container">
+        <div className="title-personal-information">Personal Information</div>
+        <label className="label">Name</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={formUserData.firstName}
+          onChange={handleChange}
+        />
+        <label className="label">Last name</label>
+        <input
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value={formUserData.lastName}
+          onChange={handleChange}
+        />
+        <label className="label">Date of birth</label>
+        <input
+          type="text"
+          name="dateOfBirth"
+          placeholder="Date of Birth"
+          value={formUserData.dob}
+          onChange={handleChange}
+        />
+        <label className="label">Address</label>
+        <input
+          type="text"
+          name="address"
+          placeholder="Address"
+          value={formUserData.address}
+          onChange={handleChange}
+        />
+        <label className="label">Phone</label>
+        <input
+          type="text"
+          name="phone"
+          placeholder="Phone"
+          value={formUserData.phone}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="vertical-line"></div>
+      <div className="consultation-container">
+        <span className="label">Consultation Method</span>
+        <div className="radio-buttons">
+          <label>
+            <input
+              type="radio"
+              name="consultationMethod"
+              value="Phone Call"
+              onChange={handleChange}
+            />{" "}
+            Phone Call
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="consultationMethod"
+              value="Facetime"
+              onChange={handleChange}
+            />{" "}
+            Facetime
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="consultationMethod"
+              value="Zoom"
+              onChange={handleChange}
+            />{" "}
+            Zoom
+          </label>
         </div>
-        <div className="container2">
-          <h3>Consultation Method</h3>
-          <div className="radio-buttons">
-            <label>
-              <input
-                type="radio"
-                name="consultationMethod"
-                value="Phone Call"
-                onChange={handleChange}
-              />{" "}
-              Phone Call
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="consultationMethod"
-                value="Facetime"
-                onChange={handleChange}
-              />{" "}
-              Facetime
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="consultationMethod"
-                value="Zoom"
-                onChange={handleChange}
-              />{" "}
-              Zoom
-            </label>
-          </div>
-          <input
-            type="text"
-            name="diagnosis"
-            placeholder="Diagnosis"
-            value={formUserData.diagnosis}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="primaryReason"
-            placeholder="Primary Reason"
-            value={formUserData.primaryReason}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="referringPhysician"
-            placeholder="Referring Physician"
-            value={formUserData.referringPhysician}
-            onChange={handleChange}
-          />
-          <button type="button" onClick={handleEditAppointment}>
-            Back
-          </button>
-          <button type="submit">Next</button>
-        </div>
-      </form>
-    </div>
+        <input
+          type="text"
+          name="diagnosis"
+          placeholder="Diagnosis"
+          value={formUserData.diagnosis}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="primaryReason"
+          placeholder="Primary Reason"
+          value={formUserData.primaryReason}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="referringPhysician"
+          placeholder="Referring Physician"
+          value={formUserData.referringPhysician}
+          onChange={handleChange}
+        />
+        <button type="button" onClick={handleEditAppointment}>
+          Back
+        </button>
+        <button type="submit">Next</button>
+      </div>
+    </form>
   );
 }

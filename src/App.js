@@ -7,6 +7,7 @@ import ColorTheme from "./components/ColorTheme/ColorTheme";
 import Header from "./components/Header/Header.js";
 import Footer from "./components/Footer/Footer.js";
 import Calendar from "./components/NewCalendar/NewCalendar";
+import PersonalPathologyForm from "./components/Appointment/PersonalPathologyForm";
 
 import "./App.css";
 
@@ -16,12 +17,15 @@ function App() {
       <Header height="60px" />
 
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HeroSection />} />
-          <Route path="/colors" element={<ColorTheme />} />
-          <Route path="/appointments" element={<Stepper />} />
-          <Route path="/new-calendar" element={<Calendar />} />
-        </Routes>
+        <div className="background-image">
+          <Routes>
+            <Route path="/" element={<HeroSection />} />
+            <Route path="/colors" element={<ColorTheme />} />
+            <Route path="/appointments" element={<Stepper />} />
+            <Route path="/new-calendar" element={<Calendar />} />
+            <Route path="/form" element={<PersonalPathologyForm />} />
+          </Routes>
+        </div>
       </BrowserRouter>
 
       <div className="nav-container">

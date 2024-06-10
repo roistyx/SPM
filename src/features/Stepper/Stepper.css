@@ -2,16 +2,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-  padding: 20px;
-  /* max-width: 100%; */
-  /* min-width: 1200px; */
-  /* outline: 1px solid #f30c0c; */
 
-  /* background-color: brown; */
 
-  /* box-sizing: border-box;  */
+
+
 }
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  /* height: 610px; */
+  padding: 50px;
+  border-radius: 15px;
+  margin-top: 45px;
+
+  /* width: 80.625rem; */
+  outline: 1px solid #f30c0c;
+
+}
+
 .step-counter {
   display: flex;
   justify-content: right;
