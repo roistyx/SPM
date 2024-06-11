@@ -9,17 +9,17 @@ import "./Stepper.css";
 const steps = [
   {
     counter: "1",
-    label: "Choose Appointment",
+    title: "Date and Time",
     content: <NewCalendar />,
   },
   {
     counter: "2",
-    label: "Your Info",
+    title: "Personal Information",
     content: <PersonalPathologyForm />,
   },
   {
     counter: "3",
-    label: "Confirmation",
+    title: "Confirmation",
     content: <Confirmation />,
   },
 ];
@@ -38,7 +38,10 @@ const Stepper = () => {
         <div
           onClick={() => handleStepChange(currentStep + 1)}
           className="step-counter">
-          Step {currentStep}/{steps.length}
+          <div className="title">{steps[currentStep - 1].title}</div>
+          <div>
+            Step {currentStep}/{steps.length}
+          </div>
         </div>
         <div>{steps[currentStep - 1].content}</div>
       </div>

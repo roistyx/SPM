@@ -3,9 +3,6 @@
   flex-direction: column;
   align-items: center;
 
-
-
-
 }
 
 .content-container {
@@ -13,10 +10,11 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  /* height: 610px; */
-  padding: 50px;
+  max-height: 610px;
+  padding: 40px;
   border-radius: 15px;
   margin-top: 45px;
+  /* background-color: red; */
 
   /* width: 80.625rem; */
   outline: 1px solid #f30c0c;
@@ -25,11 +23,19 @@
 
 .step-counter {
   display: flex;
-  justify-content: right;
-  font-size: 1.125rem;
-  line-height: 2.25rem;
+  justify-content: space-between;
+  /* font-size: 1.125rem; */
+  /* line-height: 2.25rem; */
   width: 100%;
   margin-bottom: 30px;
-  font-weight: 400;
-  color: var(--text-secondary);
+  /* font-weight: 400; */
+  /* color: var(--text-secondary); */
+
+}
+
+.title {
+  display: inline-block;
+  font-weight: 600;
+  line-height: 2.25rem;
+  font-size: 1.75rem;
 }

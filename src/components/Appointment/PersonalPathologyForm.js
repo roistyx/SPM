@@ -61,7 +61,6 @@ export default function PersonalPathologyForm() {
   return (
     <form className="form-container">
       <div className="demographics-container">
-        <div className="title-personal-information">Personal Information</div>
         <label className="label">Name</label>
         <input
           type="text"
