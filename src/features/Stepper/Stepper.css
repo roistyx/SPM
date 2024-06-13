@@ -11,13 +11,14 @@
   align-items: center;
   background-color: white;
   max-height: 610px;
-  padding: 40px;
+  max-width: 1290px;
+  padding: 50px;
   border-radius: 15px;
   margin-top: 45px;
+  box-sizing: border-box;
   /* background-color: red; */
-
   /* width: 80.625rem; */
-  outline: 1px solid #f30c0c;
+  /* outline: 1px solid #f30c0c; */
 
 }
 

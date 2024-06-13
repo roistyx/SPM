@@ -1,8 +1,10 @@
 .calendar-container {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
-  /* justify-content: center; */
+  width: 1290px;
+  height: 515px
+    /* align-items: center; */
+    /* justify-content: center; */
 
 }
 

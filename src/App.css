@@ -5,19 +5,23 @@
   --primary: #96c7c4;
   --secondary: #638e94;
   --active: #cfcfcf;
-  --disabled: #e2e2ea
+  --disabled: #e2e2ea;
+
 }
 
 .vertical-line {
   content: '';
   /* height: 27.5rem;  */
   width: 1px;
+  height: 440px;
   /* Width of the vertical line */
   background-color: #e2e2ea;
   /* Color of the vertical line */
   /* margin-right: 2.813rem; */
-  margin-left: 5.625rem;
-  margin-right: 5.625rem;
+  /* margin-left: 5.625rem;
+  margin-right: 5.625rem; */
+  margin-left: 90px;
+  margin-right: 90px
 }
 
 .App {
@@ -30,6 +34,7 @@
   max-width: 1440px;
 
   margin: auto;
+
 }
 
 

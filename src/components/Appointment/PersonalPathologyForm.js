@@ -106,31 +106,34 @@ export default function PersonalPathologyForm() {
       <div className="consultation-container">
         <span className="label">Consultation Method</span>
         <div className="radio-buttons">
-          <label>
+          <label className="radio-button-container">
             <input
               type="radio"
               name="consultationMethod"
               value="Phone Call"
               onChange={handleChange}
-            />{" "}
+            />
+            <span class="checkmark"></span>
             Phone Call
           </label>
-          <label>
+          <label className="radio-button-container">
             <input
               type="radio"
               name="consultationMethod"
               value="Facetime"
               onChange={handleChange}
-            />{" "}
+            />
+            <span class="checkmark"></span>
             Facetime
           </label>
-          <label>
+          <label className="radio-button-container">
             <input
               type="radio"
               name="consultationMethod"
               value="Zoom"
               onChange={handleChange}
-            />{" "}
+            />
+            <span class="checkmark"></span>
             Zoom
           </label>
         </div>
