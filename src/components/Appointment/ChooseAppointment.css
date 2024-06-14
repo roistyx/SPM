@@ -6,8 +6,6 @@
   min-width: 470px;
 }
 
-
-
 .appointment-header {
   font-size: 24px;
   font-weight: 600;
@@ -39,6 +37,15 @@
 }
 
 .appointment-button:hover {
+  background-color: var(--secondary);
+  color: #fff;
+}
+
+.active {
+  background-color: var(--primary);
+  color: #fff;
+}
+.active:hover {
   background-color: var(--primary);
   color: #fff;
 }

@@ -1,21 +1,26 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  LocalizationProvider,
+  DatePicker,
+} from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 import {
   setFormData,
   setCurrentStep,
-} from "../../features/Stepper/stepperSlice";
+} from '../../features/Stepper/stepperSlice';
 
-import "./PersonalPathologyForm.css";
+import './PersonalPathologyForm.css';
 
 export default function PersonalPathologyForm() {
-  const currentFormData = useSelector((state) => state.stepper.currentFormData);
+  const currentFormData = useSelector(
+    (state) => state.stepper.currentFormData
+  );
   const selectedAppointmentObject = useSelector(
     (state) => state.stepper.selectedAppointment
   );
-  console.log("selectedAppointmentObject", selectedAppointmentObject);
+  console.log('selectedAppointmentObject', selectedAppointmentObject);
   const step = useSelector((state) => state.stepper.currentStep);
   const dispatch = useDispatch();
 
@@ -61,7 +66,7 @@ export default function PersonalPathologyForm() {
   return (
     <form className="form-container">
       <div className="demographics-container">
-        <label className="label">Name</label>
+        {/* <label className="label">Name</label> */}
         <input
           type="text"
           name="name"
@@ -69,7 +74,7 @@ export default function PersonalPathologyForm() {
           value={formUserData.firstName}
           onChange={handleChange}
         />
-        <label className="label">Last name</label>
+        {/* <label className="label">Last name</label> */}
         <input
           type="text"
           name="lastName"
@@ -77,7 +82,7 @@ export default function PersonalPathologyForm() {
           value={formUserData.lastName}
           onChange={handleChange}
         />
-        <label className="label">Date of birth</label>
+        {/* <label className="label">Date of birth</label> */}
         <input
           type="text"
           name="dateOfBirth"
@@ -85,7 +90,7 @@ export default function PersonalPathologyForm() {
           value={formUserData.dob}
           onChange={handleChange}
         />
-        <label className="label">Address</label>
+        {/* <label className="label">Address</label> */}
         <input
           type="text"
           name="address"
@@ -93,7 +98,7 @@ export default function PersonalPathologyForm() {
           value={formUserData.address}
           onChange={handleChange}
         />
-        <label className="label">Phone</label>
+        {/* <label className="label">Phone</label> */}
         <input
           type="text"
           name="phone"
@@ -104,7 +109,9 @@ export default function PersonalPathologyForm() {
       </div>
       <div className="vertical-line"></div>
       <div className="consultation-container">
-        <span className="label">Consultation Method</span>
+        <span className="title-consultation-method">
+          Consultation Method
+        </span>
         <div className="radio-buttons">
           <label className="radio-button-container">
             <input
@@ -113,8 +120,9 @@ export default function PersonalPathologyForm() {
               value="Phone Call"
               onChange={handleChange}
             />
-            <span class="checkmark"></span>
-            Phone Call
+            <span class="checkmark" />
+
+            <span class="consultation-label">Phone Call</span>
           </label>
           <label className="radio-button-container">
             <input
@@ -123,8 +131,8 @@ export default function PersonalPathologyForm() {
               value="Facetime"
               onChange={handleChange}
             />
-            <span class="checkmark"></span>
-            Facetime
+            <span class="checkmark" />
+            <span class="consultation-label">Facetime</span>
           </label>
           <label className="radio-button-container">
             <input
@@ -133,8 +141,8 @@ export default function PersonalPathologyForm() {
               value="Zoom"
               onChange={handleChange}
             />
-            <span class="checkmark"></span>
-            Zoom
+            <span class="checkmark" />
+            <span class="consultation-label">Zoom</span>
           </label>
         </div>
         <input
