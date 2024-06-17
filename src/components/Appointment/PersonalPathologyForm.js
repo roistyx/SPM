@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  LocalizationProvider,
-  DatePicker,
-} from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-
-import {
   setFormData,
   setCurrentStep,
 } from '../../features/Stepper/stepperSlice';
-
+import DynamicDateInput from '../../elements/DynamicDateInput';
 import './PersonalPathologyForm.css';
 
 export default function PersonalPathologyForm() {
@@ -20,7 +14,6 @@ export default function PersonalPathologyForm() {
   const selectedAppointmentObject = useSelector(
     (state) => state.stepper.selectedAppointment
   );
-  console.log('selectedAppointmentObject', selectedAppointmentObject);
   const step = useSelector((state) => state.stepper.currentStep);
   const dispatch = useDispatch();
 
@@ -40,16 +33,10 @@ export default function PersonalPathologyForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log('name, value', name, value);
     setFormUserData((prevState) => ({
       ...prevState,
       [name]: value,
-    }));
-  };
-
-  const handleDateChange = (newValue) => {
-    setFormUserData((prevState) => ({
-      ...prevState,
-      dob: newValue,
     }));
   };
 
@@ -69,7 +56,7 @@ export default function PersonalPathologyForm() {
         {/* <label className="label">Name</label> */}
         <input
           type="text"
-          name="name"
+          name="firstName"
           placeholder="Name"
           value={formUserData.firstName}
           onChange={handleChange}
@@ -82,15 +69,24 @@ export default function PersonalPathologyForm() {
           value={formUserData.lastName}
           onChange={handleChange}
         />
-        {/* <label className="label">Date of birth</label> */}
-        <input
+        <DynamicDateInput handleChange={handleChange} />
+
+        {/* <input
           type="text"
-          name="dateOfBirth"
+          name="dob"
+          // min={}
           placeholder="Date of Birth"
           value={formUserData.dob}
           onChange={handleChange}
-        />
+        /> */}
         {/* <label className="label">Address</label> */}
+        <input
+          type="text"
+          name="email"
+          placeholder="Email"
+          value={formUserData.email}
+          onChange={handleChange}
+        />
         <input
           type="text"
           name="address"
@@ -109,67 +105,73 @@ export default function PersonalPathologyForm() {
       </div>
       <div className="vertical-line"></div>
       <div className="consultation-container">
-        <span className="title-consultation-method">
-          Consultation Method
-        </span>
-        <div className="radio-buttons">
-          <label className="radio-button-container">
-            <input
-              type="radio"
-              name="consultationMethod"
-              value="Phone Call"
-              onChange={handleChange}
-            />
-            <span class="checkmark" />
+        <div className="input-container">
+          <span className="title-consultation-method">
+            Consultation Method
+          </span>
+          <div className="radio-buttons">
+            <label className="radio-button-container">
+              <input
+                type="radio"
+                name="consultationMethod"
+                value="Phone Call"
+                onChange={handleChange}
+              />
+              <span class="checkmark" />
 
-            <span class="consultation-label">Phone Call</span>
-          </label>
-          <label className="radio-button-container">
-            <input
-              type="radio"
-              name="consultationMethod"
-              value="Facetime"
-              onChange={handleChange}
-            />
-            <span class="checkmark" />
-            <span class="consultation-label">Facetime</span>
-          </label>
-          <label className="radio-button-container">
-            <input
-              type="radio"
-              name="consultationMethod"
-              value="Zoom"
-              onChange={handleChange}
-            />
-            <span class="checkmark" />
-            <span class="consultation-label">Zoom</span>
-          </label>
+              <span class="consultation-label">Phone Call</span>
+            </label>
+            <label className="radio-button-container">
+              <input
+                type="radio"
+                name="consultationMethod"
+                value="Facetime"
+                onChange={handleChange}
+              />
+              <span class="checkmark" />
+              <span class="consultation-label">Facetime</span>
+            </label>
+            <label className="radio-button-container">
+              <input
+                type="radio"
+                name="consultationMethod"
+                value="Zoom"
+                onChange={handleChange}
+              />
+              <span class="checkmark" />
+              <span class="consultation-label">Zoom</span>
+            </label>
+          </div>
+          <input
+            type="text"
+            name="diagnosis"
+            placeholder="Diagnosis"
+            value={formUserData.diagnosis}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="primaryReason"
+            placeholder="Primary Reason"
+            value={formUserData.primaryReason}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="referringPhysician"
+            placeholder="Referring Physician"
+            value={formUserData.referringPhysician}
+            onChange={handleChange}
+          />
         </div>
-        <input
-          type="text"
-          name="diagnosis"
-          placeholder="Diagnosis"
-          value={formUserData.diagnosis}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="primaryReason"
-          placeholder="Primary Reason"
-          value={formUserData.primaryReason}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="referringPhysician"
-          placeholder="Referring Physician"
-          value={formUserData.referringPhysician}
-          onChange={handleChange}
-        />
-        <button type="button" onClick={handleEditAppointment}>
-          Back
-        </button>
-        <button type="submit">Next</button>
+        <div className="submission-or-edit-buttons ">
+          <button type="button" onClick={handleEditAppointment}>
+            Back
+          </button>
+          <button type="submit" onClick={handleSubmit}>
+            Next
+          </button>
+        </div>
       </div>
     </form>
   );

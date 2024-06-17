@@ -1,16 +1,20 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import QueryCalendar from "../../api/QueryCalendar";
-import { setCurrentStep } from "../../features/Stepper/stepperSlice";
-import AppointmentDateTitle from "./AppointmentDateTitle";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import QueryCalendar from '../../api/QueryCalendar';
+import { setCurrentStep } from '../../features/Stepper/stepperSlice';
+import AppointmentDateTitle from './AppointmentDateTitle';
+import './Confirmation.css';
 
 export default function Confirmation() {
-  const [appointmentConfirmed, setAppointmentConfirmed] = useState(false);
-  const currentFormData = useSelector((state) => state.stepper.currentFormData);
+  const [appointmentConfirmed, setAppointmentConfirmed] =
+    useState(false);
+  const currentFormData = useSelector(
+    (state) => state.stepper.currentFormData
+  );
   const selectedAppointmentObject = useSelector(
     (state) => state.stepper.selectedAppointment
   );
-  console.log("selectedAppointment", selectedAppointmentObject);
+  console.log('currentFormData', currentFormData);
 
   const step = useSelector((state) => state.stepper.currentStep);
   const dispatch = useDispatch();
@@ -21,7 +25,7 @@ export default function Confirmation() {
       currentFormData,
       selectedAppointmentObject,
     });
-    console.log("response", response);
+    console.log('response', response);
     setAppointmentConfirmed(true);
   };
 
@@ -31,33 +35,23 @@ export default function Confirmation() {
 
   return (
     <div className="confirmation-container">
-      {!appointmentConfirmed ? (
-        <>
-          <AppointmentDateTitle selectedObj={selectedAppointmentObject} />
-          <div>
-            <h1>Confirmation</h1>
-            <p>First Name: {currentFormData.firstName}</p>
-            <p>Last Name: {currentFormData.lastName}</p>
-            <p>Address: {currentFormData.address}</p>
-            <p>Phone: {currentFormData.phone}</p>
-            <p>Date of Birth: {currentFormData.dob}</p>
-            <p>Email: {currentFormData.email}</p>
-            <p>Consultation Method: {currentFormData.consultationMethod}</p>
-            <p>Diagnosis: {currentFormData.diagnosis}</p>
-            <p>Primary Reason: {currentFormData.primaryReason}</p>
-            <p>Referring Physician: {currentFormData.referringPhysician}</p>
-          </div>
-          <div>
-            <button onClick={handleEditAppointment}>Previous</button>
-            <button onClick={handleSubmitAppointment}>Confirm</button>
-          </div>
-        </>
-      ) : (
-        <div>
-          <h1>Appointment Confirmed</h1>
-          <p>Thank you for confirming your appointment</p>
+      <AppointmentDateTitle selectedObj={selectedAppointmentObject} />
+      <div className="left-container"></div>
+      <div className="vertical-line"></div>
+      <div className="right-container">
+        <div className="input-container"></div>
+        <div className="submission-or-buttons">
+          <button type="button" onClick={handleEditAppointment}>
+            Back
+          </button>
+          <button
+            type="submit"
+            // onClick={handleSubmit}
+          >
+            Next
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 }
