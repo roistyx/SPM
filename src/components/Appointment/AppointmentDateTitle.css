@@ -1,0 +1,15 @@
+.appointment-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 20px;
+  font-weight: 500;
+  margin: 0 0 30px 50px;
+}
+
+.date-and-time {
+  color: var(--text-secondary);
+  margin: 0 10px 0 10px;
+}

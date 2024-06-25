@@ -6,7 +6,6 @@
   --secondary: #638e94;
   --active: #cfcfcf;
   --disabled: #e2e2ea;
-
 }
 
 .vertical-line {
@@ -21,7 +20,7 @@
   /* margin-left: 5.625rem;
   margin-right: 5.625rem; */
   margin-left: 90px;
-  margin-right: 90px
+  margin-right: 90px;
 }
 
 .App {
@@ -34,11 +33,7 @@
   max-width: 1440px;
 
   margin: auto;
-
 }
-
-
-
 
 .background-image {
   position: relative;

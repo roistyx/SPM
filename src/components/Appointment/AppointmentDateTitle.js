@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import './AppointmentDateTitle.css';
 
 function AppointmentDateTitle({ selectedObj }) {
   function extractAppointmentInfo(selectedObj) {
@@ -6,13 +7,17 @@ function AppointmentDateTitle({ selectedObj }) {
     const startTime = new Date(selectedObj.startTime);
 
     // Extract date
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const date = startTime.toLocaleDateString("en-US", options);
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    };
+    const date = startTime.toLocaleDateString('en-US', options);
 
     // Extract start time
-    const startTimeStr = startTime.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
+    const startTimeStr = startTime.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
       hour12: true,
     });
 
@@ -27,11 +32,13 @@ function AppointmentDateTitle({ selectedObj }) {
   const extractedInfo = extractAppointmentInfo(selectedObj);
   // console.log(extractedInfo);
   return (
-    <div className="appointment-date-title">
-      <h2>{extractedInfo.date}</h2>
-      <h3>
+    <div className="appointment-title-container">
+      Appointment date:
+      <span className="date-and-time">{extractedInfo.date}</span>
+      Time:
+      <span className="date-and-time">
         {extractedInfo.startTime} - {extractedInfo.duration}
-      </h3>
+      </span>
     </div>
   );
 }
