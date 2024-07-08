@@ -21,6 +21,7 @@ const ChooseAppointment = ({
   // const selectedAppointment = useSelector(
   //   (state) => state.stepper.selectedAppointment
   // );
+  console.log('navigationDate', navigationDate);
   const currentDatePickerValue = useSelector(
     (state) => state.stepper.currentDatePickerValue
   );
@@ -34,7 +35,7 @@ const ChooseAppointment = ({
   };
   useEffect(() => {
     setAppointmentSelected(false);
-  }, [navigationDate]);
+  }, [currentDatePickerValue.value]);
 
   return (
     <>
@@ -46,14 +47,7 @@ const ChooseAppointment = ({
         </div>
         {!slots || slots.length !== 0 ? (
           <div>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '10px',
-                padding: '20px',
-              }}
-            >
+            <div className="appointment-time-grid">
               {slots.map((appointment) => {
                 // Convert UTC time to local time for display
                 const startTime = new Date(

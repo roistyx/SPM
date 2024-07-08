@@ -40,6 +40,7 @@ export default function Confirmation() {
       <AppointmentDetails
         currentFormData={currentFormData}
         handleEditAppointment={handleEditAppointment}
+        handleSubmitAppointment={handleSubmitAppointment}
       />
       {/* <div className="columns-container">
         <div className="left-container">

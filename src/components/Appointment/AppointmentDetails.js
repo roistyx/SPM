@@ -4,6 +4,7 @@ import './AppointmentDetails.css';
 const AppointmentDetails = ({
   currentFormData,
   handleEditAppointment,
+  handleSubmitAppointment,
 }) => {
   return (
     <div>
@@ -60,7 +61,9 @@ const AppointmentDetails = ({
             <button type="button" onClick={handleEditAppointment}>
               Back
             </button>
-            <button type="submit">Next</button>
+            <button type="submit" onClick={handleSubmitAppointment}>
+              Next
+            </button>
           </div>
         </div>
       </div>

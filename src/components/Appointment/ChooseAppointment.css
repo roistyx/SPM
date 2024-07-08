@@ -22,6 +22,14 @@
   font-size: 1.125rem;
   letter-spacing: 0.86px;
 }
+.appointment-time-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  margin-top: 1.5rem;
+  overflow: scroll;
+  height: 300px;
+}
 
 .appointment-button {
   font-size: 20px;
