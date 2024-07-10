@@ -5,9 +5,14 @@ import {
   setCurrentStep,
 } from '../../features/Stepper/stepperSlice';
 import DynamicDateInput from '../../elements/DynamicDateInput';
+import AddressValidation from './AddressValidation';
+import FormValidator from '../../validations/FormValidator';
 import './PersonalPathologyForm.css';
 
 export default function PersonalPathologyForm() {
+  const [errors, setErrors] = useState({ email: '', password: '' });
+  console.log('errors', errors);
+
   const currentFormData = useSelector(
     (state) => state.stepper.currentFormData
   );
@@ -33,7 +38,8 @@ export default function PersonalPathologyForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log('name, value', name, value);
+    // console.log('name, value', name, value);
+
     setFormUserData((prevState) => ({
       ...prevState,
       [name]: value,
@@ -42,6 +48,12 @@ export default function PersonalPathologyForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const validationErrors = FormValidator.validate(formUserData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      console.error('Form validation errors');
+      return;
+    }
     dispatch(setFormData({ ...formUserData }));
     dispatch(setCurrentStep(step + 1));
   };

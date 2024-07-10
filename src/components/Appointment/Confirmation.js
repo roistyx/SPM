@@ -22,7 +22,7 @@ export default function Confirmation() {
 
   const handleSubmitAppointment = async (e) => {
     e.preventDefault();
-    const response = await QueryCalendar.addAppointment({
+    const response = await QueryCalendar.submitAppointment({
       currentFormData,
       selectedAppointmentObject,
     });

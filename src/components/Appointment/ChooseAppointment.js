@@ -21,7 +21,6 @@ const ChooseAppointment = ({
   // const selectedAppointment = useSelector(
   //   (state) => state.stepper.selectedAppointment
   // );
-  console.log('navigationDate', navigationDate);
   const currentDatePickerValue = useSelector(
     (state) => state.stepper.currentDatePickerValue
   );
