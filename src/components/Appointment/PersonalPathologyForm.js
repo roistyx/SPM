@@ -11,7 +11,7 @@ import './PersonalPathologyForm.css';
 
 export default function PersonalPathologyForm() {
   const [errors, setErrors] = useState({ email: '', password: '' });
-  console.log('errors', errors);
+  console.log('errors', errors.lastName);
 
   const currentFormData = useSelector(
     (state) => state.stepper.currentFormData
@@ -77,9 +77,14 @@ export default function PersonalPathologyForm() {
         <input
           type="text"
           name="lastName"
-          placeholder="Last Name"
+          placeholder={
+            errors.lastName === 'Required' ? 'Required' : 'Last Name'
+          }
           value={formUserData.lastName}
           onChange={handleChange}
+          style={{
+            borderColor: errors.lastName === 'Required' ? 'red' : '',
+          }}
         />
         <DynamicDateInput handleChange={handleChange} />
 
