@@ -2,7 +2,7 @@ import React from 'react';
 import Stepper from '../../features/Stepper/Stepper';
 import './BookNowModal.css';
 
-const BookNowModal = ({ isOpen, onClose }) => {
+const BookNowModal = ({ isOpen, onClose, content }) => {
   if (!isOpen) return null;
 
   return (
@@ -11,7 +11,7 @@ const BookNowModal = ({ isOpen, onClose }) => {
         className="modal-content"
         onClick={(e) => e.stopPropagation()}
       >
-        <Stepper />
+        {content}
         <button onClick={onClose}>Close</button>
       </div>
     </div>

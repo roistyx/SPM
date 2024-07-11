@@ -4,18 +4,23 @@ import QueryCalendar from '../../api/QueryCalendar';
 import { setCurrentStep } from '../../features/Stepper/stepperSlice';
 import AppointmentDateTitle from './AppointmentDateTitle';
 import AppointmentDetails from './AppointmentDetails';
+import BookNowModal from '../../components/BookNowModal/BookNowModal.js';
+import ErrorList from './ErrorListComponent';
 import './Confirmation.css';
 
 export default function Confirmation() {
   const [appointmentConfirmed, setAppointmentConfirmed] =
     useState(false);
+  const [errors, setErrors] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+
   const currentFormData = useSelector(
     (state) => state.stepper.currentFormData
   );
   const selectedAppointmentObject = useSelector(
     (state) => state.stepper.selectedAppointment
   );
-  console.log('currentFormData', currentFormData);
 
   const step = useSelector((state) => state.stepper.currentStep);
   const dispatch = useDispatch();
@@ -27,7 +32,13 @@ export default function Confirmation() {
       selectedAppointmentObject,
     });
     console.log('response', response);
-    setAppointmentConfirmed(true);
+    if (response.error) {
+      setErrors(response.error.errors);
+      setIsModalOpen(true);
+    } else {
+      console.log('response', response);
+      setAppointmentConfirmed(true);
+    }
   };
 
   const handleEditAppointment = () => {
@@ -36,6 +47,12 @@ export default function Confirmation() {
 
   return (
     <div className="confirmation-container">
+      <BookNowModal
+        isOpen={isModalOpen}
+        onClose={toggleModal}
+        content={<ErrorList errors={errors} />}
+      />
+
       <AppointmentDateTitle selectedObj={selectedAppointmentObject} />
       <AppointmentDetails
         currentFormData={currentFormData}

@@ -11,7 +11,6 @@ import './PersonalPathologyForm.css';
 
 export default function PersonalPathologyForm() {
   const [errors, setErrors] = useState({ email: '', password: '' });
-  console.log('errors', errors.lastName);
 
   const currentFormData = useSelector(
     (state) => state.stepper.currentFormData
@@ -48,12 +47,12 @@ export default function PersonalPathologyForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = FormValidator.validate(formUserData);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      console.error('Form validation errors');
-      return;
-    }
+    // const validationErrors = FormValidator.validate(formUserData);
+    // if (Object.keys(validationErrors).length > 0) {
+    //   setErrors(validationErrors);
+    //   console.error('Form validation errors');
+    //   return;
+    // }
     dispatch(setFormData({ ...formUserData }));
     dispatch(setCurrentStep(step + 1));
   };
@@ -134,9 +133,9 @@ export default function PersonalPathologyForm() {
                 value="Phone Call"
                 onChange={handleChange}
               />
-              <span class="checkmark" />
+              <span className="checkmark" />
 
-              <span class="consultation-label">Phone Call</span>
+              <span className="consultation-label">Phone Call</span>
             </label>
             <label className="radio-button-container">
               <input
