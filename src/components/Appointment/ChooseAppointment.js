@@ -58,12 +58,20 @@ const ChooseAppointment = ({
                 });
                 return (
                   <button
-                    className={`appointment-button ${
+                    className={` ${
                       clickedAppointmentId === appointment._id
                         ? 'active'
                         : ''
+                    } ${
+                      appointment.isBooked
+                        ? 'disabled'
+                        : 'appointment-button'
                     }`}
                     key={appointment._id}
+                    console={console.log(
+                      'appointment',
+                      appointment.isBooked
+                    )}
                     onClick={() =>
                       handleAppointmentClick(appointment)
                     }
