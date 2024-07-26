@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import QueryCalendar from '../../api/QueryCalendar';
-import { setCurrentStep } from '../../features/Stepper/stepperSlice';
+import {
+  setCurrentStep,
+  setConfirmationData,
+} from '../../features/Stepper/stepperSlice';
 import AppointmentDateTitle from './AppointmentDateTitle';
 import AppointmentDetails from './AppointmentDetails';
-import BookNowModal from '../../components/BookNowModal/BookNowModal.js';
+import BookNowModal from '../BookNowModal/BookNowModal.js';
 import ErrorList from './ErrorListComponent';
-import './Confirmation.css';
+
+import './SubmitUserAppointment.css';
 
 export default function Confirmation() {
   const [appointmentConfirmed, setAppointmentConfirmed] =
@@ -18,6 +22,7 @@ export default function Confirmation() {
   const currentFormData = useSelector(
     (state) => state.stepper.currentFormData
   );
+
   const selectedAppointmentObject = useSelector(
     (state) => state.stepper.selectedAppointment
   );
@@ -31,14 +36,37 @@ export default function Confirmation() {
       currentFormData,
       selectedAppointmentObject,
     });
-    console.log('response', response);
     if (response.error) {
+      console.log('response.error.errors', response.error);
       setErrors(response.error.errors);
       setIsModalOpen(true);
-    } else {
-      console.log('response', response);
-      setAppointmentConfirmed(true);
+      return;
     }
+    if (response.statusText !== 'OK') {
+      {
+        console.log('An unexpected error occurred');
+        // setErrors(response.error.errors);
+        // setIsModalOpen(true);
+      }
+    }
+    if (response.data.status === false) {
+      const errors = [
+        {
+          type: 'status',
+          value: '',
+          msg: response.data.message,
+          path: 'Schedular',
+          location: 'body',
+        },
+      ];
+      setErrors(errors);
+      setIsModalOpen(true);
+    }
+    // setErrors(response.data.message);
+    // setIsModalOpen(true);
+    console.log('response', response);
+    dispatch(setConfirmationData(response.data));
+    dispatch(setCurrentStep(step + 1));
   };
 
   const handleEditAppointment = () => {

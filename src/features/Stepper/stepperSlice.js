@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { set } from "lodash";
+import { createSlice } from '@reduxjs/toolkit';
+import { set } from 'lodash';
 
 export const stepperSlice = createSlice({
-  name: "stepper",
+  name: 'stepper',
   initialState: {
     currentStep: 1,
     currentFormData: {},
@@ -10,6 +10,7 @@ export const stepperSlice = createSlice({
     calendarAvailability: {},
     selectedAppointment: {},
     currentDatePickerValue: {},
+    confirmationData: {},
   },
   reducers: {
     setCurrentStep: (state, action) => {
@@ -39,18 +40,20 @@ export const stepperSlice = createSlice({
       const { field, message } = action.payload;
       state.errors[field] = message;
     },
+    setConfirmationData: (state, action) => {
+      state.confirmationData = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
   setCurrentStep,
-  currentFormData,
-
+  // currentFormData,
+  setConfirmationData,
   setFormData,
   setAppointmentData,
   setCalendarAvailability,
-
   setSetSelectedAppointment,
   setCurrentDatePickerValue,
 } = stepperSlice.actions;
