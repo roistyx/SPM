@@ -22,13 +22,34 @@
   font-size: 1.125rem;
   letter-spacing: 0.86px;
 }
+.grid-container {
+  height: 330px;
+  position: relative;
+  /* outline: 1px solid red; */
+}
+
 .appointment-time-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
   margin-top: 1.5rem;
+  max-height: 300px;
   overflow: scroll;
-  height: 300px;
+}
+
+.grid-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px; /* Adjust the height of the gradient overlay */
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  ); /* Gradient from white to transparent */
+  pointer-events: none; /* Ensure the gradient doesn't interfere with scrolling or clicking */
 }
 
 .appointment-button {
@@ -47,11 +68,13 @@
 .appointment-button:hover {
   background-color: var(--secondary);
   color: #fff;
+  z-index: 1;
 }
 
 .active {
   background-color: var(--primary);
   color: #fff;
+  z-index: 1;
 }
 .active:hover {
   background-color: var(--primary);

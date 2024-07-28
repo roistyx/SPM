@@ -45,7 +45,7 @@ const ChooseAppointment = ({
           {currentDatePickerValue.value}
         </div>
         {!slots || slots.length !== 0 ? (
-          <div>
+          <div className="grid-container">
             <div className="appointment-time-grid">
               {slots.map((appointment) => {
                 // Convert UTC time to local time for display

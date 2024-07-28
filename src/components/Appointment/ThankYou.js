@@ -8,8 +8,8 @@ export default function ThankYou() {
   console.log('confirmationData', confirmationData);
   return (
     <div>
-      <h1>Thank You</h1>
-      {confirmationData ? (
+      {/* <h1>Thank You</h1> */}
+      {confirmationData.isBooked ? (
         <div>
           <p>
             <strong>Appointment Status:</strong>{' '}

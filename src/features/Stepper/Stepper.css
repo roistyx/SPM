@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .content-container {
@@ -10,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  max-height: 610px;
+  height: 610px;
   max-width: 1290px;
   padding: 50px;
   border-radius: 15px;
@@ -19,7 +18,6 @@
   /* background-color: red; */
   /* width: 80.625rem; */
   /* outline: 1px solid #f30c0c; */
-
 }
 
 .step-counter {
@@ -31,7 +29,6 @@
   margin-bottom: 30px;
   /* font-weight: 400; */
   /* color: var(--text-secondary); */
-
 }
 
 .title {
