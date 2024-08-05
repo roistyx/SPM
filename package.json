@@ -1,18 +1,17 @@
 {
-  "name": "SPM-Project",
-  "version": "0.1.0",
-  "private": true,
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
   "dependencies": {
-    "@babel/runtime": "^7.24.0",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@faker-js/faker": "^8.3.1",
-    "@mui/base": "^5.0.0-beta.10",
-    "@mui/icons-material": "^5.14.3",
-    "@mui/material": "^5.15.12",
-    "@mui/styled-engine-sc": "^5.12.0",
-    "@mui/x-date-pickers": "^6.19.6",
-    "@mui/x-date-pickers-pro": "^6.11.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -25,6 +24,7 @@
     "git": "^0.1.5",
     "i": "^0.3.7",
     "lodash": "^4.17.21",
+    "luxon": "^3.4.4",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.45",
     "nodemon": "^3.1.0",
@@ -38,28 +38,19 @@
     "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "name": "SPM-Project",
+  "private": true,
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  },
+  "version": "0.1.0"
 }
