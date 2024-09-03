@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './HeroSection.css';
-import { Appointments } from '../Appointment/ChooseAppointment';
-import { Between } from '../../layouts/Line';
-import getImage from '../../api/getImage';
-import Button from '../../elements/Button';
+import { Appointments } from '../Appointment/ChooseAppointment.js';
+import { Between } from '../../layouts/Line.js';
+import getImage from '../../api/getImage.js';
+import Button from '../../elements/Button.js';
 
 function isValidUrl(urlString) {
   try {

@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   setFormData,
   setCurrentStep,
-} from '../../features/Stepper/stepperSlice';
-import DynamicDateInput from '../../elements/DynamicDateInput';
-import AddressValidation from './AddressValidation';
-import FormValidator from '../../validations/FormValidator';
+} from '../../features/Stepper/stepperSlice.js';
+import DynamicDateInput from '../../elements/DynamicDateInput.js';
+import AddressValidation from './AddressValidation.js';
+import FormValidator from '../../validations/FormValidator.js';
 import './PersonalPathologyForm.css';
 
 export default function PersonalPathologyForm() {

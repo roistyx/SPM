@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
 import {
   setSetSelectedAppointment,
   setCurrentStep,
-} from '../../features/Stepper/stepperSlice';
+} from '../../features/Stepper/stepperSlice.js';
 import './ChooseAppointment.css'; // Import the CSS file
+
 const ChooseAppointment = ({
   datePickerValue,
   navigationDate,

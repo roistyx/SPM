@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import drawerReducer from "../components/Drawer/drawerSlice";
-import stepperSlice from "../features/Stepper/stepperSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import drawerReducer from '../components/Drawer/drawerSlice.js';
+import stepperSlice from '../features/Stepper/stepperSlice.js';
 
 export const store = configureStore({
   reducer: {

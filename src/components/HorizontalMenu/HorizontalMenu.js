@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Between, Center } from '../../layouts/Line';
-import MenuItem from './MenuItem';
+import { Between, Center } from '../../layouts/Line.js';
+import MenuItem from './MenuItem.js';
 
 const HorizontalMenuContainer = styled.div`
   display: flex;

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import QueryCalendar from '../../api/QueryCalendar';
+import QueryCalendar from '../../api/QueryCalendar.js';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setAppointmentData,
   setCurrentDatePickerValue,
   setCalendarAvailability,
-} from '../../features/Stepper/stepperSlice';
+} from '../../features/Stepper/stepperSlice.js';
 import moment from 'moment-timezone';
 
-import CalendarBody from './CalendarBody';
-import ChooseAppointment from '../Appointment/ChooseAppointment';
+import CalendarBody from './CalendarBody.js';
+import ChooseAppointment from '../Appointment/ChooseAppointment.js';
 import './Calendar.css';
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

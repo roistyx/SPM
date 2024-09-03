@@ -2,13 +2,11 @@ import React from 'react';
 import {
   setAppointmentData,
   setCalendarAvailability,
-} from '../../features/Stepper/stepperSlice';
+} from '../../features/Stepper/stepperSlice.js';
 import { useSelector, useDispatch } from 'react-redux';
-
-import './CalendarBody.css';
-import format from 'date-fns/format';
-
+import format from 'date-fns/esm/format/index.js';
 import CalendarHeader from './CalendarHeader.js';
+import './CalendarBody.css';
 
 // const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import QueryCalendar from '../../api/QueryCalendar';
+import QueryCalendar from '../../api/QueryCalendar.js';
 import {
   setCurrentStep,
   setConfirmationData,
-} from '../../features/Stepper/stepperSlice';
-import AppointmentDateTitle from './AppointmentDateTitle';
-import AppointmentDetails from './AppointmentDetails';
+} from '../../features/Stepper/stepperSlice.js';
+import AppointmentDateTitle from './AppointmentDateTitle.js';
+import AppointmentDetails from './AppointmentDetails.js';
 import BookNowModal from '../BookNowModal/BookNowModal.js';
-import ErrorList from './ErrorListComponent';
+import ErrorList from './ErrorListComponent.js';
 
 import './SubmitUserAppointment.css';
 

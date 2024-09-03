@@ -1,5 +1,5 @@
 import React from 'react';
-import Stepper from '../../features/Stepper/Stepper';
+import Stepper from '../../features/Stepper/Stepper.js';
 import './BookNowModal.css';
 
 const BookNowModal = ({ isOpen, onClose, content }) => {

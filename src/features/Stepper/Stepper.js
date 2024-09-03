@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCurrentStep } from './stepperSlice'; // adjust the import path as necessary
-import NewCalendar from '../../components/NewCalendar/NewCalendar';
-import PersonalPathologyForm from '../../components/Appointment/PersonalPathologyForm';
-import Confirmation from '../../components/Appointment/SubmitUserAppointment';
-import ThankYou from '../../components/Appointment/ThankYou';
+import { setCurrentStep } from './stepperSlice.js'; // adjust the import path as necessary
+import NewCalendar from '../../components/NewCalendar/NewCalendar.js';
+import PersonalPathologyForm from '../../components/Appointment/PersonalPathologyForm.js';
+import Confirmation from '../../components/Appointment/SubmitUserAppointment.js';
+import ThankYou from '../../components/Appointment/ThankYou.js';
 import './Stepper.css';
 
 const steps = [

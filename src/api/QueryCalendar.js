@@ -1,5 +1,10 @@
 import axios from 'axios';
 import { DateTime } from 'luxon';
+
+const serverUrl =
+  process.env.REACT_APP_HOSTNAME +
+  ':' +
+  process.env.REACT_APP_SERVER_PORT;
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 function convertToUTCNewYorkTime(dateString) {
   // Create a DateTime in the America/New_York timezone at the start of the given date
@@ -18,7 +23,7 @@ export default class QueryCalendar {
   static async postCalendarAvailability(navigationDate) {
     try {
       const response = await axios.post(
-        'http://localhost:3100/calendar/post-calendar-availability',
+        `${serverUrl}/calendar/post-calendar-availability`,
         {
           navigationDate,
           timeZone,
@@ -33,11 +38,10 @@ export default class QueryCalendar {
   static async postDayAppointments(dateString) {
     const requestDateInUtcDateTime =
       convertToUTCNewYorkTime(dateString);
-    // console.log("utcDateTime", dateString);
 
     try {
       const response = await axios.post(
-        'http://localhost:3100/calendar/post-day-appointments',
+        `${serverUrl}/calendar/post-day-appointments`,
         {
           requestDateInUtcDateTime,
         }
@@ -54,7 +58,7 @@ export default class QueryCalendar {
   ) {
     try {
       const response = await axios.post(
-        'http://localhost:3100/calendar/submit-appointment',
+        `${serverUrl}/calendar/submit-appointment`,
         currentFormData,
         selectedAppointmentObject
       );

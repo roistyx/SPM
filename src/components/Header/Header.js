@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Drawer from '../../components/Drawer/Drawer.js';
-import LogoComponent from '../../components/LogoComponent/LogoComponent';
+import LogoComponent from '../../components/LogoComponent/LogoComponent.js';
 import HorizontalMenu from '../../components/HorizontalMenu/HorizontalMenu.js';
 import BookNowModal from '../../components/BookNowModal/BookNowModal.js';
 import Button from '../../elements/Button.js';

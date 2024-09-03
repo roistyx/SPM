@@ -1,9 +1,9 @@
-import React, { useRef, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { closeDrawer, openDrawer } from "./drawerSlice";
+import React, { useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeDrawer, openDrawer } from './drawerSlice.js';
 // import MenuIcon from "@mui/icons-material/Menu";
-import MenuIcon from "../../elements/MenuIcon.js";
-import "./Drawer.css";
+import MenuIcon from '../../elements/MenuIcon.js';
+import './Drawer.css';
 
 function extractInt(cssValue) {
   const numericValue = parseInt(cssValue, 2);
@@ -19,7 +19,7 @@ function Drawer({ links, marginTop }) {
   const overlayRef = useRef(null);
 
   const handleEscape = (event) => {
-    if (event.key === "Escape") {
+    if (event.key === 'Escape') {
       dispatch(closeDrawer());
     }
   };
@@ -44,7 +44,8 @@ function Drawer({ links, marginTop }) {
       <div
         className="icon-container"
         // style={height}
-        onClick={toggleDrawer}>
+        onClick={toggleDrawer}
+      >
         <MenuIcon />
       </div>
 
@@ -57,7 +58,10 @@ function Drawer({ links, marginTop }) {
           onClick={() => dispatch(closeDrawer())}
           // style={{ marginTop: '80px' }}
         >
-          <div className="drawer" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="drawer"
+            onClick={(e) => e.stopPropagation()}
+          >
             {links.map((item) => (
               <div className="drawer-item">
                 <a className="menu-link" href={item.link}>
