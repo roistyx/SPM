@@ -1,16 +1,14 @@
-import axios from 'axios';
-import { DateTime } from 'luxon';
+import axios from "axios";
+import { DateTime } from "luxon";
 
-const serverUrl =
-  process.env.REACT_APP_HOSTNAME +
-  ':' +
-  process.env.REACT_APP_SERVER_PORT;
+const serverUrl = process.env.REACT_APP_API_URL;
+console.log("serverUrl: ", serverUrl);
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 function convertToUTCNewYorkTime(dateString) {
   // Create a DateTime in the America/New_York timezone at the start of the given date
   const newYorkTime = DateTime.fromISO(dateString, {
     zone: timeZone,
-  }).startOf('day');
+  }).startOf("day");
 
   // Convert this DateTime to UTC
   const utcTime = newYorkTime.toUTC();
@@ -31,13 +29,12 @@ export default class QueryCalendar {
       );
       return response.data;
     } catch (error) {
-      console.log('Error while calling getCalendarData API ', error);
+      console.log("Error while calling getCalendarData API ", error);
     }
   }
 
   static async postDayAppointments(dateString) {
-    const requestDateInUtcDateTime =
-      convertToUTCNewYorkTime(dateString);
+    const requestDateInUtcDateTime = convertToUTCNewYorkTime(dateString);
 
     try {
       const response = await axios.post(
@@ -48,14 +45,11 @@ export default class QueryCalendar {
       );
       return response.data;
     } catch (error) {
-      console.log('Error while calling getCalendarData API ', error);
+      console.log("Error while calling getCalendarData API ", error);
     }
   }
 
-  static async submitAppointment(
-    currentFormData,
-    selectedAppointmentObject
-  ) {
+  static async submitAppointment(currentFormData, selectedAppointmentObject) {
     try {
       const response = await axios.post(
         `${serverUrl}/calendar/submit-appointment`,
@@ -64,14 +58,11 @@ export default class QueryCalendar {
       );
       return response;
     } catch (error) {
-      console.log(
-        'Error while calling confirmAppointment API ',
-        error
-      );
+      console.log("Error while calling confirmAppointment API ", error);
       return {
         error: error.response
           ? error.response.data
-          : 'An unexpected error occurred',
+          : "An unexpected error occurred",
       };
     }
   }

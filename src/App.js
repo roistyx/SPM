@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
-import Stepper from './features/Stepper/Stepper.js';
-import HeroSection from './components/HeroSection/HeroSection.js';
-import Header from './components/Header/Header.js';
-import Footer from './components/Footer/Footer.js';
-import Calendar from './components/NewCalendar/NewCalendar.js';
-import PersonalPathologyForm from './components/Appointment/PersonalPathologyForm.js';
+import React, { useEffect, useRef, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Stepper from "./features/Stepper/Stepper.js";
+import HeroSection from "./components/HeroSection/HeroSection.js";
+import Header from "./components/Header/Header.js";
+import Footer from "./components/Footer/Footer.js";
+import Calendar from "./components/NewCalendar/NewCalendar.js";
+import PersonalPathologyForm from "./components/Appointment/PersonalPathologyForm.js";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
