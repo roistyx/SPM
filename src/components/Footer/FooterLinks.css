@@ -1,0 +1,32 @@
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    /* Horizontal layout */
+    /* width: 584px; */
+    /* Hug width */
+    /* height: 26px; */
+    /* Hug height */
+    gap: 24px;
+    /* Space between items */
+    align-items: center;
+    /* Vertically center the items */
+    font-size: 16px;
+    /* Standard font size */
+    color: var(--text-secondary);
+    /* Text color */
+    padding: 0 0 60px 0;
+}
+
+.footer-link {
+    font-weight: 400;
+    text-decoration: none;
+    /* Remove default underline */
+    color: var(--text-secondary);
+    /* Link color */
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #0056b3;
+    /* Darker color on hover */
+}

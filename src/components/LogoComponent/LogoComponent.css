@@ -2,8 +2,8 @@
     height: 5vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-left: 5px;
+    /* justify-content: center; */
+    /* margin-left: -10px; */
     box-sizing: border-box;
 }
 
@@ -40,7 +40,7 @@
     color: var(--color-textSecondary);
     border-radius: 5px;
     /* padding: 6px; */
-    
+
 }
 
 @media (max-width: 1300px) {

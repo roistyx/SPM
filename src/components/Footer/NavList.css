@@ -1,0 +1,27 @@
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    /* Stack items vertically */
+    width: 144px;
+
+    /* Hug width */
+    height: auto;
+    /* Hug height */
+    gap: 15px;
+    /* Space between items */
+}
+
+.nav-item {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #007bff;
+    /* Change color on hover */
+    text-decoration: underline;
+}
