@@ -6,6 +6,7 @@ import Header from "./components/Header/Header.js";
 import Footer from "./components/Footer/Footer.js";
 import Calendar from "./components/NewCalendar/NewCalendar.js";
 import PersonalPathologyForm from "./components/Appointment/PersonalPathologyForm.js";
+import CsvUploadAndDisplay from "./components/Csv/CsvUploadAndDisplay.js";
 
 import "./App.css";
 
@@ -15,17 +16,17 @@ function App() {
       <div className="App">
         <Header height="60px" />
 
-        <div className="background-image">
+        <div>
           <Routes>
             <Route path="/" element={<HeroSection />} />
             <Route path="/appointments" element={<Stepper />} />
             <Route path="/new-calendar" element={<Calendar />} />
             <Route path="/form" element={<PersonalPathologyForm />} />
+            <Route
+              path="/csv/import-preview"
+              element={<CsvUploadAndDisplay />}
+            />
           </Routes>
-        </div>
-
-        <div className="nav-container">
-          <Footer>footer</Footer>
         </div>
       </div>
     </BrowserRouter>
