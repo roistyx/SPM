@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function CsvUploader() {
@@ -7,13 +7,31 @@ function CsvUploader() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [uploadComplete, setUploadComplete] = useState(false);
+  const [accounts, setAccounts] = useState([]);
+  const [selectedAccount, setSelectedAccount] = useState("");
 
-  console.log("Upload sent and received successfully", receivedData);
+  useEffect(() => {
+    const fetchAccounts = async () => {
+      try {
+        const res = await axios.post("http://localhost:3100/accounts"); // Adjust endpoint as needed
+        setAccounts(res.data);
+      } catch (err) {
+        console.error("Failed to fetch accounts", err);
+        setError("Failed to load accounts.");
+      }
+    };
+
+    fetchAccounts();
+  }, []);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
-    setUploadComplete(false); // Reset completion status when selecting a new file
+    setUploadComplete(false);
     setError("");
+  };
+
+  const handleAccountChange = (e) => {
+    setSelectedAccount(e.target.value);
   };
 
   const handleUpload = async () => {
@@ -22,12 +40,14 @@ function CsvUploader() {
       return;
     }
 
+    if (!selectedAccount) {
+      setError("Please select an account first.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("file", file);
-
-    // for (let pair of formData.entries()) {
-    //   console.log(pair[0] + ":", pair[1]);
-    // }
+    formData.append("accountId", selectedAccount); // Pass account ID to backend
 
     setLoading(true);
     setUploadComplete(false);
@@ -52,6 +72,24 @@ function CsvUploader() {
 
   return (
     <div className="p-4">
+      <div className="mb-4">
+        <label htmlFor="account-select" className="mr-2 font-semibold">
+          Select Account:
+        </label>
+        <select
+          id="account-select"
+          value={selectedAccount}
+          onChange={handleAccountChange}
+          className="border rounded px-2 py-1">
+          <option value="">-- Select an account --</option>
+          {accounts.map((account) => (
+            <option key={account.id} value={account.id}>
+              {account.name} ({account.id})
+            </option>
+          ))}
+        </select>
+      </div>
+
       <input type="file" accept=".csv" onChange={handleFileChange} />
       <button onClick={handleUpload} className="mt-2 border px-4 py-2 rounded">
         Upload
